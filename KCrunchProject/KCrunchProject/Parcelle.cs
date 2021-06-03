@@ -12,6 +12,12 @@ namespace KCrunchProject
         private char nom;
         private List<Unité> Parcelle;
         #endregion
+        #region Constructeurs
+
+        #endregion
+        #region Méthodes
+
+        #endregion
 
     }
 }

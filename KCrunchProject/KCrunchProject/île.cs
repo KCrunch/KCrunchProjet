@@ -7,10 +7,10 @@ namespace KCrunchProject
 {
     class île
     {
-        private List<Unité> code;
-
+        #region Attributs
         private string chiffreP;
-
+        #endregion
+        #region Construteurs
         public île(string cheminAccesFichier)
         {
             // instanciations de l'attribut unité
@@ -21,14 +21,14 @@ namespace KCrunchProject
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
                 string str;
-                Unité U;   azerty
+                Unité U;
                 string Unit;
                 while ((str = sr.ReadLine()) != null)
                 {
                     for (int i = 0; i < 10; i++)
                     {
                         Unit = str.Substring(i, i + 1);
-                        U = new Unité(Unit,);
+                        U = new Unité(Unit);
                     }
                 }
                 sr.Close();
@@ -39,6 +39,8 @@ namespace KCrunchProject
                 // e est alimentée par Windows avec un message d'erreur
                 Console.WriteLine(e.Message);
             }
+            
         }
+        #endregion
     }
 }

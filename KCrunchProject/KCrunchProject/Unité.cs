@@ -12,10 +12,12 @@ namespace KCrunchProject
         private int CoordonnéeY;
         private bool
         #endregion
+        #region Contructeurs
         public Unité(string nu)
         {
 
         }
+        #endregion
         /*public Unité(string code)
         {
             string[] tab = code.Split(':');
