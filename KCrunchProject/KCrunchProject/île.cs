@@ -5,11 +5,11 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    class île
+    class île 
     {
+        private List<Unité> unité;
 
-
-        public île(string cheminAccesFichier)
+        public île(string cheminAccesFichier) 
         {
             int y = 0;
             // instanciations de l'attribut unité
@@ -17,11 +17,15 @@ namespace KCrunchProject
             // Il faut gérer les erreurs -> structure try...catch
             try
             {
+
+                unité = new List<Unité>();
+
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
                 string str;
-                Unité U;
                 string Unit;
+                Unité U;
+
                 while ((str = sr.ReadLine()) != null)
                 {
                     y = y + 1;
@@ -30,11 +34,12 @@ namespace KCrunchProject
                         Unit = str.Substring(i,1);
                         Console.WriteLine(" " + Unit);
                         U = new Unité(Unit, i, y);
-
+                        unité.Add(U);
                     }
                 }
                 sr.Close();
             }
+
             catch (Exception e)
             {
                 // Exécuté uniquement si erreur dans le bloc try
@@ -43,6 +48,20 @@ namespace KCrunchProject
             }
 
 
+        }
+
+        private void Afficher()
+        {
+            int rang = 1;
+            // Parcours de la liste camions élément par élément
+            foreach (Unité U in unité)
+            {
+                Console.Write("{0} : ", rang);
+                // Appel de la méthode Affiche de la classe Camion
+                U.Afficher();
+                rang++;
+            }
+            Console.WriteLine("Total : {0} camions", unité.Count);
         }
     }
 }

@@ -21,18 +21,17 @@ namespace KCrunchProject
             NomU = nu;
             X = x;
             Y = y;
+
         }
-        #endregion
 
         public void Afficher()
         {
-            Console.WriteLine("Choisir les coordonnée de l'unité");
-            Console.WriteLine("X = ");
-            X = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Y = ");
-            Y = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})",NomU , X , Y);
+ 
+            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", NomU, X, Y);
         }
+        #endregion
+
+        
         /*public Unité(string code)
         {
             string[] tab = code.Split(':');
