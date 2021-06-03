@@ -8,7 +8,7 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("C:\Users\Shugo\OneDrive\Bureau\BureauMLK\cours\C#objet\Clerentin\Projet\Sacbb.clair.txt");
+            île P = new île("C: /Users/Shugo/OneDrive/Bureau/BureauMLK/cours/C#objet/Clerentin/Projet/chiffreP.txt");
         }
     }
 }

@@ -5,13 +5,10 @@ using System.IO;
 
 namespace KCrunchProject 
 {
-    class Parcelle : île
+    class Parcelle 
     {
+        private int TailleP; 
+        
 
-         
-        public Parcelle(string np)
-        {
-            NomP = np;
-        }
     }
 }
