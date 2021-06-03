@@ -16,7 +16,16 @@ namespace KCrunchProject
 
         #endregion
         #region Méthodes
+        /*int NbrP()
+         * {
+         * 
+         * }
 
+        int TailleP()
+        {
+
+        }
+        */
         #endregion
 
     }
