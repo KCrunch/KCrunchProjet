@@ -24,7 +24,7 @@ namespace KCrunchProject
         {
             string[] tab = code.Split(':');
 
-            code = tab [0];
+            CodeU = tab[0];
 
         }
     }
