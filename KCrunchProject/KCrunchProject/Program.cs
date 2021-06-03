@@ -6,7 +6,7 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Helloo World!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
