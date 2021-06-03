@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace KCrunchProject
+namespace KCrunchProject 
 {
-    class Parcelle
+    class Parcelle : île
     {
+
     }
 }
