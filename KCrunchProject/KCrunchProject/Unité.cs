@@ -16,13 +16,14 @@ namespace KCrunchProject
         #endregion
 
         #region Contructeurs
-        public Unité(string nu, int x, int y) 
+        public Unité(string NomU, int X, int Y) 
         {
-            this.NomU = nu;
-            this.X = x;
-            this.Y = y;
+            this.NomU = NomU;
+            this.X = X;
+            this.Y = Y;
 
         }
+        
 
         public void Affiche()
         {

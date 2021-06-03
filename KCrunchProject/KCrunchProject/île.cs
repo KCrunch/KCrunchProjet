@@ -28,14 +28,15 @@ namespace KCrunchProject
 
                 while ((str = sr.ReadLine()) != null)
                 {
-                    y = y + 1;
-                    for (int i = 0; i < 9; i=i+1)
+                    
+                    for (int i = 0; i <= 9; i=i+1)
                     {
                         Unit = str.Substring(i,1);
-                        Console.WriteLine(" " + Unit);
                         U = new Unité(Unit, i, y);
+                        Console.WriteLine("Unité = {0}, X = {1}, Y = {2}",Unit, i, y);
                         unité.Add(U);
                     }
+                    y = y + 1;
                 }
                 sr.Close();
             }
@@ -50,7 +51,7 @@ namespace KCrunchProject
 
         }
 
-        public static void Affiche(List<Unité> unité)
+        public  void Affiche()
         {
             // Parcours de la liste camions élément par élément
             foreach (Unité U in unité)

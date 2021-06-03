@@ -40,7 +40,7 @@ namespace KCrunchProject
             }
 
             
-           Affiche ();
+            Ile.Affiche ();
 
         }
     }
