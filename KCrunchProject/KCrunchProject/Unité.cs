@@ -13,7 +13,7 @@ namespace KCrunchProject
 
         protected int Y;
 
-        Unité(string nu, int x, int y)
+       public Unité(string nu, int x, int y)
         {
             NomU = nu;
             X = x;
