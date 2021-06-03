@@ -7,14 +7,14 @@ namespace KCrunchProject
 {
     class île
     {
-        private List<Parcelle> code;
+        private List<Unité> code;
 
         private string chiffreP;
 
         public île(string cheminAccesFichier)
         {
             // instanciations de l'attribut camions
-            code = new List<Parcelle>();
+            code = new List<Unité>();
             // Attention ! La lecture dans le fichier peut échouer
             // Il faut gérer les erreurs -> structure try...catch
             try
@@ -22,11 +22,11 @@ namespace KCrunchProject
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
                 string str;
-                Parcelle P;
+                Unité U;
                 while ((str = sr.ReadLine()) != null)
                 {
-                    P = new Parcelle(str);
-                    code.Add(P);
+                    U = new Unité(str);
+                    code.Add(U);
                 }
                 sr.Close();
             }

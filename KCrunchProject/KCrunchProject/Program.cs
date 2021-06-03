@@ -8,7 +8,7 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            Parcelle P = new Parcelle("C: /Users/Shugo/OneDrive/Bureau/BureauMLK/cours/C#objet/Clerentin/Projet/chiffreP.txt");
+            île P = new île("C: /Users/Shugo/OneDrive/Bureau/BureauMLK/cours/C#objet/Clerentin/Projet/chiffreP.txt");
         }
     }
 }
