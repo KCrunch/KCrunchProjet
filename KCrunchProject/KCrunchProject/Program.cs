@@ -8,13 +8,13 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            île P = new île("../../../chiffreP.txt");
+            île P = new île("../../../Phatt.clair.txt");
 
             string line;
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
-                StreamReader sr = new StreamReader("../../../chiffreP.txt");
+                StreamReader sr = new StreamReader("../../../Phatt.clair.txt");
                 //Read the first line of text
                 line = sr.ReadLine();
                 //Continue to read until you reach end of file

@@ -21,10 +21,13 @@ namespace KCrunchProject
             NomU = nu;
             X = x;
             Y = y;
-
-
         }
         #endregion
+
+        public void Afficher(int x,int y)
+        {
+            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})",NomU , x , y);
+        }
         /*public Unité(string code)
         {
             string[] tab = code.Split(':');
