@@ -8,7 +8,6 @@ namespace KCrunchProject
     class île
     {
 
-        private string chiffreP;
 
         public île(string cheminAccesFichier)
         {
@@ -26,9 +25,11 @@ namespace KCrunchProject
                 while ((str = sr.ReadLine()) != null)
                 {
                     y = y + 1;
-                    for (int i = 0; i < 10; i++)
+                    Console.WriteLine(str);
+                    for (int i = 0; i < 9; i=i+1)
                     {
-                        Unit = str.Substring(i, i + 1);
+                        Unit = str.Substring(i,1);
+                        Console.WriteLine(" " + Unit);
                         U = new Unité(Unit, i, y);
                     }
                 }

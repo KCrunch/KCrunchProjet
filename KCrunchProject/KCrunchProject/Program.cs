@@ -10,7 +10,7 @@ namespace KCrunchProject
         {
             île P = new île("../../../Phatt.clair.txt");
 
-            string line;
+            string line,test;
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
@@ -23,7 +23,10 @@ namespace KCrunchProject
                     //write the lie to console window
                     Console.WriteLine(line);
                     //Read the next line
+                    test = line.Substring(0, 4);
+                    Console.WriteLine(" "+test);
                     line = sr.ReadLine();
+                        
                 }
                 //close the file
                 sr.Close();
