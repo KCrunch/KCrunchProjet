@@ -5,12 +5,11 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    class île
-    {
+    class île 
 
         private string chiffreP;
 
-        public île(string cheminAccesFichier)
+        public île(string cheminAccesFichier) 
         {
             int y = 0;
             // instanciations de l'attribut unité
@@ -26,7 +25,7 @@ namespace KCrunchProject
                 while ((str = sr.ReadLine()) != null)
                 {
                     y = y + 1;
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 10; i++) 
                     {
                         Unit = str.Substring(i, i + 1);
                         U = new Unité(Unit,i,y);

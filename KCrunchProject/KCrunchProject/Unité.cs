@@ -7,14 +7,18 @@ namespace KCrunchProject
     class Unité
     {
         #region Attributs
-        private string NomU;
+        protected string NomU;
 
-        private int x;
+        protected int X;
 
-        private int y;
+        protected int Y;
 
-        Unité(string NomU, int x, int y)
+        Unité(string nu, int x, int y)
         {
+            NomU = nu;
+            X = x;
+            Y = y;
+
 
         }
 
