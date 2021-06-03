@@ -6,26 +6,22 @@ namespace KCrunchProject
 {
     class Unité
     {
-        private int CodeU;
-
-        private int CoordonnéeU;
-
-        private string NomU = "a";
-
-        
-        public Unité(string nu,int cu)
+        #region Attributs
+        private char 
+        private int CoordonnéeX;
+        private int CoordonnéeY;
+        private bool
+        #endregion
+        public Unité(string nu)
         {
-            NomU = nu + 1;
-
-            CoordonnéeU = cu;
 
         }
-        public Unité(string code)
+        /*public Unité(string code)
         {
             string[] tab = code.Split(':');
 
             code = tab [0];
 
-        }
+        }*/
     }
 }

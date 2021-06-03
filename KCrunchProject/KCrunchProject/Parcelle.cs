@@ -5,12 +5,12 @@ using System.IO;
 
 namespace KCrunchProject 
 {
-    class Parcelle 
+    class Parcelles
     {
         #region Attribut
         private int TailleP;
         private char nom;
-        private List<Unité> camions;
+        private List<Unité> Parcelle;
         #endregion
 
     }

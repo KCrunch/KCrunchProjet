@@ -13,6 +13,7 @@ namespace KCrunchProject
 
         public île(string cheminAccesFichier)
         {
+            // instanciations de l'attribut unité
             // Attention ! La lecture dans le fichier peut échouer
             // Il faut gérer les erreurs -> structure try...catch
             try
@@ -20,11 +21,15 @@ namespace KCrunchProject
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
                 string str;
-                Unité U;
+                Unité U;   azerty
+                string Unit;
                 while ((str = sr.ReadLine()) != null)
                 {
-                    U = new Unité(str);
-                    code.Add(U);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Unit = str.Substring(i, i + 1);
+                        U = new Unité(Unit,);
+                    }
                 }
                 sr.Close();
             }
@@ -34,12 +39,6 @@ namespace KCrunchProject
                 // e est alimentée par Windows avec un message d'erreur
                 Console.WriteLine(e.Message);
             }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
-            }
         }
-
-      
     }
 }
