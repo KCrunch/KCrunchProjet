@@ -7,7 +7,6 @@ namespace KCrunchProject
 {
     class île
     {
-        private List<Unité> code;
 
         private string chiffreP;
 
@@ -21,14 +20,14 @@ namespace KCrunchProject
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
                 string str;
-                Unité U;   azerty
+                Unité U;
                 string Unit;
                 while ((str = sr.ReadLine()) != null)
                 {
                     for (int i = 0; i < 10; i++)
                     {
                         Unit = str.Substring(i, i + 1);
-                        U = new Unité(Unit,);
+                        U = new Unité(Unit);
                     }
                 }
                 sr.Close();
