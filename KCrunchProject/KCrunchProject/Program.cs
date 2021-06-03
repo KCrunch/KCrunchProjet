@@ -8,7 +8,7 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            île P = new île("../../../Phatt.clair.txt");
+            île U = new île("../../../Phatt.clair.txt");
 
             string line;
             try
