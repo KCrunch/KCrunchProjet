@@ -40,7 +40,7 @@ namespace KCrunchProject
             }
 
             
-            U.Afficher();
+           Affiche ();
 
         }
     }

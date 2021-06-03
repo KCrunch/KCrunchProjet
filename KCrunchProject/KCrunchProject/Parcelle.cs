@@ -5,7 +5,7 @@ using System.IO;
 
 namespace KCrunchProject 
 {
-    class Parcelles
+    public class Parcelles
     {
         #region Attribut
         private int TailleP;

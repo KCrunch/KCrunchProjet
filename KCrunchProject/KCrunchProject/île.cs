@@ -5,7 +5,7 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    class île 
+    public class île 
     {
         private List<Unité> unité;
 
@@ -50,18 +50,15 @@ namespace KCrunchProject
 
         }
 
-        private void Afficher()
+        public static void Affiche(List<Unité> unité)
         {
-            int rang = 1;
             // Parcours de la liste camions élément par élément
             foreach (Unité U in unité)
             {
-                Console.Write("{0} : ", rang);
                 // Appel de la méthode Affiche de la classe Camion
-                U.Afficher();
-                rang++;
+                U.Affiche();
             }
-            Console.WriteLine("Total : {0} camions", unité.Count);
+
         }
     }
 }

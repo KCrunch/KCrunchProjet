@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KCrunchProject
 {
-    class Unité 
+    public class Unité 
     {
         #region Attributs
         protected string NomU;
@@ -18,15 +18,14 @@ namespace KCrunchProject
         #region Contructeurs
         public Unité(string nu, int x, int y) 
         {
-            NomU = nu;
-            X = x;
-            Y = y;
+            this.NomU = nu;
+            this.X = x;
+            this.Y = y;
 
         }
 
-        public void Afficher()
+        public void Affiche()
         {
- 
             Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", NomU, X, Y);
         }
         #endregion
