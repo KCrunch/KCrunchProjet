@@ -7,7 +7,7 @@ namespace KCrunchProject
 {
     class Forêt
     {
-        private int CR;
+        private int CoordR;
 
     }
 }

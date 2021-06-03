@@ -7,6 +7,6 @@ namespace KCrunchProject
 {
     class Mer
     {
-        private int CM;
+        private int CoordM;
     }
 }

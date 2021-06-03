@@ -9,7 +9,7 @@ namespace KCrunchProject
     {
         private string NomP;
 
-        private int CP;
+        private int CoordP;
 
         private int TailleP; 
         
