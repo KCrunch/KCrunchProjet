@@ -8,7 +8,8 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            
+            île P = new île("../../../chiffreP.txt");
+
             string line;
             try
             {

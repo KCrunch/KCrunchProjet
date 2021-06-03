@@ -13,8 +13,6 @@ namespace KCrunchProject
 
         public île(string cheminAccesFichier)
         {
-            // instanciations de l'attribut camions
-            code = new List<Unité>();
             // Attention ! La lecture dans le fichier peut échouer
             // Il faut gérer les erreurs -> structure try...catch
             try
@@ -35,6 +33,10 @@ namespace KCrunchProject
                 // Exécuté uniquement si erreur dans le bloc try
                 // e est alimentée par Windows avec un message d'erreur
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
             }
         }
 
