@@ -10,7 +10,7 @@ namespace KCrunchProject
         {
             île Ile = new île("../../../Phatt.clair.txt");
 
-            string line,test;
+            string line;
             try
             {
                 //Pass the file path and file name to the StreamReader constructor

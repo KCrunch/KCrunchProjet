@@ -25,7 +25,6 @@ namespace KCrunchProject
                 while ((str = sr.ReadLine()) != null)
                 {
                     y = y + 1;
-                    Console.WriteLine(str);
                     for (int i = 0; i < 9; i=i+1)
                     {
                         Unit = str.Substring(i,1);
