@@ -7,10 +7,9 @@ namespace KCrunchProject
 {
     class île
     {
-        #region Attributs
+
         private string chiffreP;
-        #endregion
-        #region Construteurs
+
         public île(string cheminAccesFichier)
         {
             // instanciations de l'attribut unité
@@ -39,8 +38,6 @@ namespace KCrunchProject
                 // e est alimentée par Windows avec un message d'erreur
                 Console.WriteLine(e.Message);
             }
-            
         }
-        #endregion
     }
 }
