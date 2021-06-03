@@ -6,7 +6,7 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    class Terre
+    class Parcelle
     {
 
     }
