@@ -31,6 +31,7 @@ namespace KCrunchProject
                         Unit = str.Substring(i,1);
                         Console.WriteLine(" " + Unit);
                         U = new Unité(Unit, i, y);
+
                     }
                 }
                 sr.Close();

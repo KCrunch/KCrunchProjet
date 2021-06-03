@@ -24,9 +24,14 @@ namespace KCrunchProject
         }
         #endregion
 
-        public void Afficher(int x,int y)
+        public void Afficher()
         {
-            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})",NomU , x , y);
+            Console.WriteLine("Choisir les coordonnée de l'unité");
+            Console.WriteLine("X = ");
+            X = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Y = ");
+            Y = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})",NomU , X , Y);
         }
         /*public Unité(string code)
         {
