@@ -30,6 +30,7 @@ namespace KCrunchProject
                     {
                         Unit = str.Substring(i, i + 1);
                         U = new Unité(Unit, i, y);
+
                     }
                 }
                 sr.Close();
