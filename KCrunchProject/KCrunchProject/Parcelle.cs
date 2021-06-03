@@ -9,12 +9,19 @@ namespace KCrunchProject
     {
         #region Attribut
         private int TailleP;
-        private char nom;
+        private char nomP;
         private List<Unité> Parcelle;
         #endregion
-        #region Constructeurs
 
+        #region Constructeurs
+        public Parcelles(int tP, char nP, List<Unité> P)
+        {
+            TailleP = tP;
+            nomP = nP;
+            Parcelle = P;
+        }
         #endregion
+
         #region Méthodes
         /*int NbrP()
          * {
