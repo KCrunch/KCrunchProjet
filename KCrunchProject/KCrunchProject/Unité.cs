@@ -22,7 +22,7 @@ namespace KCrunchProject
         }
         public Unité(string code)
         {
-            int[] tab = code.Split(':');
+            string[] tab = code.Split(':');
 
             CodeU = tab[0];
 
