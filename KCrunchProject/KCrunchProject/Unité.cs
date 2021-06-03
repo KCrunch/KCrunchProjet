@@ -13,19 +13,15 @@ namespace KCrunchProject
 
         protected int Y;
 
-       public Unité(string nu, int x, int y)
+        #endregion
+
+        #region Contructeurs
+        public Unité(string nu, int x, int y)
         {
             NomU = nu;
             X = x;
             Y = y;
 
-
-        }
-
-        #endregion
-        #region Contructeurs
-        public Unité(string nu)
-        {
 
         }
         #endregion
