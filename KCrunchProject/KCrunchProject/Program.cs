@@ -10,7 +10,7 @@ namespace KCrunchProject
         {
             île P = new île("chiffreP.txt");
 
-            Console.WriteLine("%0", P);
+            Console.WriteLine(P);
         }
     }
 }
