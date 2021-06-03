@@ -7,15 +7,24 @@ namespace KCrunchProject
     class Unité
     {
         #region Attributs
-        private char 
-        private int CoordonnéeX;
-        private int CoordonnéeY;
-        private bool
+        private string NomU;
+
+        private int x;
+
+        private int y;
+
+        Unité(string NomU, int x, int y)
+        {
+
+        }
+
         #endregion
+           
         public Unité(string nu)
         {
 
         }
+        
         /*public Unité(string code)
         {
             string[] tab = code.Split(':');
