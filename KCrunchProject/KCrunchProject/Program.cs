@@ -9,6 +9,8 @@ namespace KCrunchProject
         static void Main(string[] args)
         {
             île P = new île("chiffreP.txt");
+
+            Console.WriteLine("%0", P);
         }
     }
 }

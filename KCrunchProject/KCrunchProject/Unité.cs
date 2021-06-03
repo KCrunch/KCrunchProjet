@@ -10,12 +10,12 @@ namespace KCrunchProject
 
         private int CoordonnéeU;
 
-        private string NomU;
+        private string NomU = "a";
 
         
         public Unité(string nu,int cu)
         {
-            NomU = nu;
+            NomU = nu + 1;
 
             CoordonnéeU = cu;
 
