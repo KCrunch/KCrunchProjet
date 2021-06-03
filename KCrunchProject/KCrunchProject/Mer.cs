@@ -7,5 +7,6 @@ namespace KCrunchProject
 {
     class Mer
     {
+        private int CM;
     }
 }

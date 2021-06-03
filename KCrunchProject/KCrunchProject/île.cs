@@ -7,10 +7,6 @@ namespace KCrunchProject
 {
     class île
     {
-        private string forêt;
+        private string Code;
 
-        private string mer;
-
-        private string parcelle;
     }
-}

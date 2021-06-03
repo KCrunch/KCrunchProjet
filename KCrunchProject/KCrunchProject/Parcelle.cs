@@ -7,6 +7,8 @@ namespace KCrunchProject
 {
     class Parcelle : île
     {
+        private int CP;
 
+        private int TailleP;      
     }
 }
