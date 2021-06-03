@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KCrunchProject
 {
-    class Unité
+    class Unité 
     {
         #region Attributs
         protected string NomU;
@@ -16,7 +16,7 @@ namespace KCrunchProject
         #endregion
 
         #region Contructeurs
-        public Unité(string nu, int x, int y)
+        public Unité(string nu, int x, int y) 
         {
             NomU = nu;
             X = x;

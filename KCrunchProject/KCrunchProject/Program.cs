@@ -8,7 +8,7 @@ namespace KCrunchProject
     {
         static void Main(string[] args)
         {
-            île U = new île("../../../Phatt.clair.txt");
+            île Ile = new île("../../../Phatt.clair.txt");
 
             string line,test;
             try
@@ -23,8 +23,6 @@ namespace KCrunchProject
                     //write the lie to console window
                     Console.WriteLine(line);
                     //Read the next line
-                    test = line.Substring(0, 4);
-                    Console.WriteLine(" "+test);
                     line = sr.ReadLine();
                         
                 }
@@ -41,6 +39,7 @@ namespace KCrunchProject
                 Console.WriteLine("Executing finally block.");
             }
 
+            U.Afficher();
         }
     }
 }
