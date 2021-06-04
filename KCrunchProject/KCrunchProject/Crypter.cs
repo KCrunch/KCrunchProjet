@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KCrunchProject
+/*namespace KCrunchProject
 {
   /*  class Crypter : Unité
     {
