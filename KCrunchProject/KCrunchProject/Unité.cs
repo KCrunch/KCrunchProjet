@@ -7,7 +7,7 @@ namespace KCrunchProject
     public class Unité 
     {
         #region Attributs
-        protected char NomU;
+        protected string NomU;
 
         protected int X;
 
@@ -20,7 +20,7 @@ namespace KCrunchProject
         #endregion
 
         #region Contructeurs
-        public Unité(char NomU, int X, int Y, int code) 
+        public Unité(string NomU, int X, int Y, int code) 
         {
             this.NomU = NomU;
             this.X = X;
