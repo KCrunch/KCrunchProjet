@@ -10,6 +10,8 @@ namespace KCrunchProject
         {
             île Phatt = new île("../../../Phatt.clair.txt");
             Phatt.Affiche();
+
+
             /*
             string line;
             try
