@@ -32,7 +32,7 @@ namespace KCrunchProject
                     for (int i = 0; i <= 9; i=i+1)
                     {
                         Unit = str.Substring(i,1);
-                        U = new Unité(Unit, i, y, 0);
+                        U = new Unité(Unit, i, y);
                         Console.WriteLine("Unité = {0}, X = {1}, Y = {2}",Unit, i, y);
                         unité.Add(U);
                     }
