@@ -14,11 +14,10 @@ namespace KCrunchProject
         #endregion
 
         #region Constructeurs
-        public Parcelles(int tP, char nP, List<Unité> P)
+        public Parcelles(char nP)
         {
-            TailleP = tP;
             nomP = nP;
-            Parcelle = P;
+            Parcelle = new List<Unité>();
         }
         #endregion
 

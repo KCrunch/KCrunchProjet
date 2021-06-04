@@ -35,7 +35,7 @@ namespace KCrunchProject
                     for (int i = 0; i <= 9; i=i+1)
                     {
                         Unit = str.Substring(i,1);
-                        U = new Unité(Unit, i, y);
+                        U = new Unité(Convert.ToChar(Unit), i, y);
                         unités.Add(U);
                     }
                     y = y + 1;
@@ -65,14 +65,19 @@ namespace KCrunchProject
             }
 
         }
-        public void Crypter()
+        public void Parcelle()
         {
-
-        }
-
-        public void Decrypter()
-        {
-
+            int maxi = 0;
+            int nom;
+            foreach (Unité U in unités)
+            {
+                if (U.Type =="Parcelle")
+                {
+                    nom = U.NomU1;
+                    maxi = maxi + nom;
+                    if (nom>maxi);
+                }
+            }
         }
         #endregion
     }
