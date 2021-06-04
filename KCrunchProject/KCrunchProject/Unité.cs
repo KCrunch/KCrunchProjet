@@ -15,6 +15,8 @@ namespace KCrunchProject
 
         private int code = 0;
 
+        public int Code { get => code; set => code = value; }
+
         #endregion
 
         #region Contructeurs
