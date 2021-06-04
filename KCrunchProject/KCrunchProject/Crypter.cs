@@ -11,15 +11,15 @@ namespace KCrunchProject
         private string stockNom;
         private int stockX;
 
-        public Crypter(string NomU, int X, int Y,  int code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y,code)
+        public Crypter(string NomU, int X, int Y,int code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y)
         {
             StockNom = NomU;
             for (Y = 0; Y <= 9; Y++)
             {
                 for (X = 0; X <= 9; X++)
                 {
-                    if (NomU == "M") { code = code + Mer; }
-                    if (NomU == "F") { code = code + Forêt; }
+                    if (NomU == "M")  code = code + Mer; 
+                    if (NomU == "F")  code = code + Forêt; 
                     if (X == 10) { code = code + 2 ^ 3; }
                     if (X == 0) { code = code + 2 ^ 1; }
                     if (Y == 10) { code = code + 2 ^ 2; }

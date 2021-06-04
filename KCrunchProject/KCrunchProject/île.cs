@@ -7,8 +7,11 @@ namespace KCrunchProject
 {
     public class île 
     {
-        private List<Unité> unité;
+        #region Attributs
+        private List<Unité> unités;
+        #endregion
 
+        #region Constructeurs
         public île(string cheminAccesFichier) 
         {
             int y = 0;
@@ -18,7 +21,7 @@ namespace KCrunchProject
             try
             {
 
-                unité = new List<Unité>();
+                unités = new List<Unité>();
 
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
@@ -33,8 +36,7 @@ namespace KCrunchProject
                     {
                         Unit = str.Substring(i,1);
                         U = new Unité(Unit, i, y);
-                        Console.WriteLine("Unité = {0}, X = {1}, Y = {2}",Unit, i, y);
-                        unité.Add(U);
+                        unités.Add(U);
                     }
                     y = y + 1;
                 }
@@ -50,16 +52,28 @@ namespace KCrunchProject
 
 
         }
+        #endregion
 
-        public  void Affiche()
+        #region Méthodes
+        public void Affiche()
         {
-            // Parcours de la liste camions élément par élément
-            foreach (Unité U in unité)
+            // Parcours de la liste Unités élément par élément
+            foreach (Unité U in unités)
             {
-                // Appel de la méthode Affiche de la classe Camion
+                // Appel de la méthode Affiche de la classe Unité
                 U.Affiche();
             }
 
         }
+        public void Crypter()
+        {
+
+        }
+
+        public void Decrypter()
+        {
+
+        }
+        #endregion
     }
 }
