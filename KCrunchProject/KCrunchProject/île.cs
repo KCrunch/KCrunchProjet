@@ -9,6 +9,11 @@ namespace KCrunchProject
     {
         #region Attributs
         private List<Unité> unités;
+        private List<Parcelles> ListParcelles;
+        #endregion
+
+        #region Accesseurs
+        public List<Unité> Unités { get => unités; set => unités = value; }
         #endregion
 
         #region Constructeurs
@@ -22,6 +27,7 @@ namespace KCrunchProject
             {
 
                 unités = new List<Unité>();
+                ListParcelles = new List<Parcelles>();
 
                 // Ici, instructions pouvant échouer
                 StreamReader sr = new StreamReader(cheminAccesFichier);
@@ -41,6 +47,7 @@ namespace KCrunchProject
                     y = y + 1;
                 }
                 sr.Close();
+                créationParcelles();
             }
 
             catch (Exception e)
@@ -55,31 +62,56 @@ namespace KCrunchProject
         #endregion
 
         #region Méthodes
-        public void Affiche()
+        public void AfficheUnité()
         {
             // Parcours de la liste Unités élément par élément
             foreach (Unité U in unités)
             {
-                // Appel de la méthode Affiche de la classe Unité
-                U.Affiche();
+                // Appel de la méthode AfficheU de la classe Unité
+                U.AfficheU();
             }
 
         }
-        public void Parcelle()
+        public void AfficheParcelle()
+        {
+            // Parcours de la liste Unités élément par élément
+            foreach (Parcelles P in ListParcelles)
+            {
+                // Appel de la méthode AfficheU de la classe Unité
+                P.AfficheP();
+            }
+
+        }
+        public int nbParcelle()   //retourne le nombre de parcelle(objet) à créer 
         {
             int maxi = 0;
             int nom;
             foreach (Unité U in unités)
             {
-                if (U.Type =="Parcelle")
+                if (U.Type == "Parcelle")
                 {
-                    nom = U.NomU1;
-                    maxi = maxi + nom;
-                    if (nom>maxi);
+                    nom = U.NomU;
+                    if (nom > maxi)
+                        maxi = nom;
                 }
             }
+            return maxi - 96;
         }
-        */
+        public void créationParcelles()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'île
+        {
+            ListParcelles = new List<Parcelles>();
+            char nomParcelle = 'a';
+            int nbDeParcelle = nbParcelle();
+            Parcelles P;
+            for (int i = 1; i <= nbDeParcelle; i++)
+            {
+                P = new Parcelles(nomParcelle, unités);
+                ListParcelles.Add(P);
+                nomParcelle = Convert.ToChar(Convert.ToInt32(nomParcelle) + 1);
+            }
+        }
+
+
 
         #endregion
     }

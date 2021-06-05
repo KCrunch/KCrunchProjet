@@ -4,14 +4,14 @@ using System.Text;
 
 namespace KCrunchProject
 {
-    class Crypter : Unité
+    /*class Crypter : Unité
     {
         private int Mer = 64;
         private int Forêt = 32;
         private string stockNom;
         private int stockX;
 
-        public Crypter(string NomU, int X, int Y,int Code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y)
+        public Crypter(Char NomU, int X, int Y,int Code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y)
         {
             StockNom = NomU;
             for (Y = 0; Y <= 9; Y++)
@@ -36,7 +36,7 @@ namespace KCrunchProject
                 }
             }
         }
-    }
+    }*/
 }
 
 

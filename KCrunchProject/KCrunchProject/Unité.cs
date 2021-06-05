@@ -7,7 +7,7 @@ namespace KCrunchProject
     public class Unité 
     {
         #region Attributs
-        private char NomU;
+        private char nomU;
         protected int X;
         protected int Y;
         private int code = 0;
@@ -17,13 +17,13 @@ namespace KCrunchProject
         #region Accesseurs
         public int Code { get => code; set => code = value; }
         public string Type { get => type; set => type = value; }
-        public char NomU1 { get => NomU; set => NomU = value; }
+        public char NomU { get => nomU; set => nomU = value; }
         #endregion
 
         #region Contructeurs
         public Unité(char NomU, int X, int Y) 
         {
-            this.NomU = NomU;
+            this.nomU = NomU;
             this.X = X;
             this.Y = Y;
             this.code = 0;
@@ -46,9 +46,9 @@ namespace KCrunchProject
         }
 
 
-        public void Affiche()
+        public void AfficheU()
         {
-            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", NomU, X, Y);
+            Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", nomU, X, Y);
         }
         #endregion
 
