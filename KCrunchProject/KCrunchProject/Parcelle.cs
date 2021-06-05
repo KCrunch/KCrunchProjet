@@ -33,6 +33,9 @@ namespace KCrunchProject
         public void AfficheP()
         {
             Console.WriteLine("Parcelle {0} - {1} Unités",nomP,tailleP);
+            foreach (Unité U in Parcelle)
+                Console.Write("({0},{1})  ",U.X,U.Y);
+            Console.WriteLine("\n");
         }
         #endregion
 
