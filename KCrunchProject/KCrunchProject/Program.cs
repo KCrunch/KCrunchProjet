@@ -9,9 +9,11 @@ namespace KCrunchProject
     {
 
         static void Main(string[] args)
-        {
+        { 
+
             Ile Phatt = new Ile("../../../Phatt.clair.txt");
-            Console.WriteLine();
+            DécyrpterCrypter.Crypter(Phatt);
+            Console.WriteLine("\n");
             Phatt.AfficheUnité();
             Console.WriteLine();
             Phatt.AfficheParcelle();
