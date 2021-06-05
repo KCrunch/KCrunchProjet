@@ -37,18 +37,13 @@ namespace KCrunchProject
                 this.Type = "Parcelle";
         }
 
-        public Unité(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-
+        #endregion
 
         public void AfficheU()
         {
             Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", nomU, x, y);
         }
-        #endregion
+        
 
         
         

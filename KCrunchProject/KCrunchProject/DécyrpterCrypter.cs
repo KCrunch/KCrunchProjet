@@ -3,99 +3,85 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace KCrunchProject
-{
-    class DécyrpterCrypter 
+{ 
+    static class DécyrpterCrypter 
     {
-        private int Mer = 64;
-        private int Foret = 32;
+        const int Mer = 64;
+        const int Foret = 32;
 
-        private int Nord = 1;
-        private int Ouest = 2;
-        private int Sud = 4;
-        private int Est = 8;
-
-        /*private string stockNom;
-        private int stockX;*/
-        private List<Unité> LCode;
+        const int Nord = 1;
+        const int Ouest = 2;
+        const int Sud = 4;
+        const int Est = 8;
 
 
-
-        public DécyrpterCrypter(List<Unité> ttsUnités)
+        static public void Crypter(Ile Ile)
         {
-            LCode = new List<Unité>();
-            foreach (Unité U in ttsUnités)
+            foreach (Unité U in Ile.Unités)
             {
-                    LCode.Add(U);
+                U.Code += VerifMerOuForet(U.NomU);
+                U.Code += FrontiereExeption(U.X,U.Y); ;
+                U.Code += CalculFrontiere(U.NomU, U.X, U.Y) ;
+                AfficheCrypt();
             }
         }
 
-        public void Crypter()
+        static public int VerifMerOuForet(char nomU) //
         {
-            VerifMerOuForet();
-            FrontiereExeption();
-            CalculFrontiere();
-            AfficheCrypt();
-
-
+            int code=0;
+            if (nomU == 'M') 
+                code = code + Mer;
+            else if (nomU == 'F') 
+                code = code + Foret;
+            return code;
         }
 
-        public void VerifMerOuForet() //
+        static public int FrontiereExeption(int X,int Y)
         {
-            foreach (Unité U in LCode)
-            {
-                if (U.NomU == 'M') U.Code = U.Code + Mer;
-                else if (U.NomU == 'F') U.Code = U.Code + Foret;
-            }
+            int code = 0;
+            if (X == 9) code = code + Est;
+            if (X == 0) code = code + Ouest;
+            if (Y == 9) code = code + Sud;
+            if (Y == 0) code = code + Nord;
+            if (X == 9 && Y == 9) code = code + Est + Sud;
+            if (X == 0 && Y == 0) code = code + Nord + Ouest;
+            if (X == 0 && Y == 9) code = code + Ouest + Sud;
+            if (X == 9 && Y == 0) code = code + Nord + Est;
+            return code;
         }
 
-        public void FrontiereExeption()
+        static public int CalculFrontiere(char nomU,int X, int Y)
         {
-
-            foreach (Unité U in LCode)
-            {
-                if (U.X == 9) U.Code = U.Code + Est;
-                if (U.X == 0) U.Code = U.Code + Ouest;
-                if (U.Y == 9) U.Code = U.Code + Sud;
-                if (U.Y == 0) U.Code = U.Code + Nord;
-                if (U.X == 9 && U.Y == 9) U.Code = U.Code + Est + Sud;
-                if (U.X == 0 && U.Y == 0) U.Code = U.Code + Nord + Ouest;
-                if (U.X == 0 && U.Y == 9) U.Code = U.Code + Ouest + Sud;
-                if (U.X == 9 && U.Y == 0) U.Code = U.Code + Nord + Est;
-            }
+                return SommeNordOuestSudEst(nomU, X, Y) ;
         }
 
-        public void CalculFrontiere()
+        static public int SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY)
         {
-            foreach (Unité U in LCode)
-            {
-                SommeNordOuestSudEst(U.NomU,U.X,U.Y);
-            }
-        }
-
-        public void SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY)
-        {
+            int code = 0;
             foreach (Unité U in LCode)
             {
                 if (nomP != U.NomU && U.X == BoiteX + 1)
                 {
-                    U.Code = U.Code + Est;
+                    code = code + Est;
                 }
                 if (nomP != U.NomU && U.X == BoiteX - 1)
                 {
-                    U.Code = U.Code + Ouest;
+                    code = code + Ouest;
                 }
                 if (nomP != U.NomU && U.Y == BoiteY + 1)
                 {
-                    U.Code = U.Code + Nord;
+                    code = code + Nord;
                 }
                 if (nomP != U.NomU && U.Y == BoiteY - 1)
                 {
-                    U.Code = U.Code + Sud;
+                    code = code + Sud;
                 }
             }
+            return code;
         }
 
-        public void AfficheCrypt()
+
+        static public void AfficheCrypt()
         {
             foreach (Unité U in LCode)
             {
@@ -106,14 +92,14 @@ namespace KCrunchProject
                 }
             }
         }
-
+        /*
         public void Décrypter ()
         {
         
-            /*string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
-            code = tab [0];*/
+            string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
+            code = tab [0];
 
-        }
+        }*/
         
     }
 }

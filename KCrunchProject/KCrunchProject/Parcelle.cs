@@ -21,6 +21,7 @@ namespace KCrunchProject
         #region Constructeurs
         public Parcelles(char nP, List<Unité> ttsUnités)
         {
+            
             nomP = nP;
             Parcelle = new List<Unité>();
             foreach (Unité U in ttsUnités)

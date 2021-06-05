@@ -10,8 +10,7 @@ namespace KCrunchProject
 
         static void Main(string[] args)
         {
-            
-            île Phatt = new île("../../../Phatt.clair.txt");
+            Ile Phatt = new Ile("../../../Phatt.clair.txt");
             Console.WriteLine();
             Phatt.AfficheUnité();
             Console.WriteLine();
@@ -22,11 +21,6 @@ namespace KCrunchProject
             Phatt.tailleMoyenneParcelles();
             Console.WriteLine();
             Phatt.AfficheIle();
-
-
-
-
-
         }
     }
 }

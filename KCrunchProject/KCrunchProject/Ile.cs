@@ -5,21 +5,22 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    public class île 
+    public class Ile
     {
         #region Attributs
         private List<Unité> unités;
         private List<Parcelles> ListParcelles;
-        #endregion
 
+        
+        #endregion
         #region Accesseurs
         public List<Unité> Unités { get => unités; set => unités = value; }
         #endregion
 
         #region Constructeurs
-        public île(string cheminAccesFichier) 
+        public Ile(string cheminAccesFichier)
         {
-            
+
             // instanciations de l'attribut unité
             // Attention ! La lecture dans le fichier peut échouer
             // Il faut gérer les erreurs -> structure try...catch
@@ -86,7 +87,7 @@ namespace KCrunchProject
 
         public int nbParcelle()   //retourne le nombre de parcelle(objet) à créer 
         {
-            
+
             int maxi = 0;
             int nom;
             foreach (Unité U in unités)
@@ -101,8 +102,8 @@ namespace KCrunchProject
             return maxi - 96;
         }
 
-        
-        public void créationParcelles()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'île
+
+        public void créationParcelles()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'Ile
         {
             ListParcelles = new List<Parcelles>();
             char nomParcelle = 'a';
@@ -119,19 +120,19 @@ namespace KCrunchProject
         public void tailleParcelles(char nomParcelle) //vérifie que la parcelle existe et l'affiche
         {
             bool existe = false;
-            char nom='a';
-            int taille=0;
-            foreach(Parcelles P in ListParcelles)
+            char nom = 'a';
+            int taille = 0;
+            foreach (Parcelles P in ListParcelles)
             {
                 if (nomParcelle == P.NomP)
                 {
                     existe = true;
                     nom = P.NomP;
                     taille = P.TailleP;
-                }        
+                }
             }
             if (existe)
-                Console.WriteLine("Taille de la parcelle  {0} : {1} unites",nom ,taille );
+                Console.WriteLine("Taille de la parcelle  {0} : {1} unites", nom, taille);
             else
                 Console.WriteLine("Parcelle {0} : inexistante\nTaille de la parcelle {0}: 0 unites", nomParcelle);
         }
@@ -147,7 +148,7 @@ namespace KCrunchProject
         public void AfficheIle()
         {
             int compt = 0;
-            foreach(Unité U in unités)
+            foreach (Unité U in unités)
             {
                 if (compt == 10)
                 {
