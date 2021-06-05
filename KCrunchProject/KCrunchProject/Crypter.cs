@@ -11,7 +11,7 @@ namespace KCrunchProject
         private string stockNom;
         private int stockX;
 
-        public Crypter(Char NomU, int X, int Y,int Code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y)
+        public void Crypter(Char NomU, int X, int Y,int Code, int Mer, int Forêt, string StockNom, int stockX) : base (NomU,X,Y)
         {
             StockNom = NomU;
             for (Y = 0; Y <= 9; Y++)
@@ -36,6 +36,15 @@ namespace KCrunchProject
                 }
             }
         }
+
+        public void Décrypter ()
+        {
+        
+            string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
+            code = tab [0];
+
+        }
+}
     }*/
 }
 
