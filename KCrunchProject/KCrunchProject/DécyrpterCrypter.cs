@@ -10,50 +10,70 @@ namespace KCrunchProject
         private int Forêt = 32;
         /*private string stockNom;
         private int stockX;*/
+        private List<Unité> LCode;
 
 
 
-        /*public DécyrpterCrypter()
+        public DécyrpterCrypter(List<Unité> ttsUnités)
         {
             LCode = new List<Unité>();
             foreach (Unité U in ttsUnités)
             {
-                
+                    LCode.Add(U);
             }
         }
 
         public void Crypter()
         {
-            foreach (Unité U in code)
+            ForetMer();
+            LesBord();
+            NordSudEstOuest();
+            
+        }
+
+        public void ForetMer() //
+        {
+            foreach (Unité U in LCode)
             {
-                StockNom = U.NomU;
-                foreach (Unité U in unité) { }
-                if (U.NomU == "M") Code = Code + Mer;
-                if (NomU == "F") Code = Code + Forêt;
-                if (X == 10) Code = Code + 2 ^ 3;
-                if (X == 0) Code = Code + 2 ^ 1;
-                if (Y == 10) Code = Code + 2 ^ 2;
-                if (Y == 0) Code = Code + 2 ^ 0;
-                if (X == 10 && Y == 10) Code = Code + 2 ^ 3 + 2 ^ 2;
-                if (X == 0 && Y == 0) Code = Code + 2 ^ 0 + 2 ^ 1;
-                if (X == 0 && Y == 10) Code = Code + 2 ^ 1 + 2 ^ 2;
-                if (X == 10 && Y == 0) Code = Code + 2 ^ 0 + 2 ^ 3;
-                if (StockNom != NomU)
-                {
-                    if (X == X + 1) { Code = Code + 2 ^ 3; }
-                }
-                StockNom = NomU;
+                if (U.NomU == 'M') U.Code = U.Code + 64;
+                if (U.NomU == 'F') U.Code = U.Code + 32;
             }
         }
-        
+
+        public void LesBord()
+        {
+            foreach (Unité U in LCode)
+            {
+                if (U.X == 10) U.Code = U.Code + 2 ^ 3;
+                if (U.X == 0) U.Code = U.Code + 2 ^ 1;
+                if (U.Y == 10) U.Code = U.Code + 2 ^ 2;
+                if (U.Y == 0) U.Code = U.Code + 2 ^ 0;
+                if (U.X == 10 && U.Y == 10) U.Code = U.Code + 2 ^ 3 + 2 ^ 2;
+                if (U.X == 0 && U.Y == 0) U.Code = U.Code + 2 ^ 0 + 2 ^ 1;
+                if (U.X == 0 && U.Y == 10) U.Code = U.Code + 2 ^ 1 + 2 ^ 2;
+                if (U.X == 10 && U.Y == 0) U.Code = U.Code + 2 ^ 0 + 2 ^ 3;
+            }
+        }
+
+        public void NordSudEstOuest()
+        {
+            foreach (Unité U in LCode)
+            {
+                for(int i = 0;i <= 9; i++)
+                {
+                    
+                }
+                
+            }
+        }
 
         public void Décrypter ()
         {
         
-            string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
-            code = tab [0];
+            /*string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
+            code = tab [0];*/
 
-        }*/
+        }
         
     }
 }

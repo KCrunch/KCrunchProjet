@@ -12,11 +12,15 @@ namespace KCrunchProject
         {
             
             île Phatt = new île("../../../Phatt.clair.txt");
+            Console.WriteLine();
             Phatt.AfficheUnité();
-            Console.WriteLine("\n");
+            Console.WriteLine();
             Phatt.AfficheParcelle();
+            Console.WriteLine();
             Phatt.tailleParcelles('a');
+            Console.WriteLine();
             Phatt.tailleMoyenneParcelles();
+            Console.WriteLine();
             Phatt.AfficheIle();
 
 
