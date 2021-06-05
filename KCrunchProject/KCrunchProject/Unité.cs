@@ -12,11 +12,12 @@ namespace KCrunchProject
         protected int Y;
         private int code = 0;
         private string type;
+        #endregion
 
+        #region Accesseurs
         public int Code { get => code; set => code = value; }
         public string Type { get => type; set => type = value; }
         public char NomU1 { get => NomU; set => NomU = value; }
-
         #endregion
 
         #region Contructeurs
