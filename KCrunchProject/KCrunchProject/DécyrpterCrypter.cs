@@ -41,10 +41,10 @@ namespace KCrunchProject
         static public int FrontiereExeption(int X, int Y)
         {
             int code = 0;
-            if (X == 9) code = code + Est;
+            if (Y == 0) code = code + Nord;
             if (X == 0) code = code + Ouest;
             if (Y == 9) code = code + Sud;
-            if (Y == 0) code = code + Nord;
+            if (X == 9) code = code + Est;
             return code;
         }
         static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unité> ListeUnites)
