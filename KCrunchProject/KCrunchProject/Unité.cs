@@ -25,6 +25,9 @@ namespace KCrunchProject
         #region Contructeurs
         public Unité(char NomU, int X, int Y) 
         {
+
+
+
             this.nomU = NomU;
             this.x = X;
             this.y = Y;
@@ -37,13 +40,18 @@ namespace KCrunchProject
                 this.Type = "Parcelle";
         }
 
-        #endregion
+        public Unité(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
 
         public void AfficheU()
         {
             Console.WriteLine("Nom de l'unité : {0} en postion ({1},{2})", nomU, x, y);
         }
-        
+        #endregion
 
         
         
