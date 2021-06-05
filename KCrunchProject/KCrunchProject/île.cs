@@ -14,44 +14,21 @@ namespace KCrunchProject
 
         #region Accesseurs
         public List<Unité> Unités { get => unités; set => unités = value; }
-        
-        
         #endregion
 
         #region Constructeurs
         public île(string cheminAccesFichier) 
         {
-            int y = 0;
+            
             // instanciations de l'attribut unité
             // Attention ! La lecture dans le fichier peut échouer
             // Il faut gérer les erreurs -> structure try...catch
             try
             {
-
-                unités = new List<Unité>();
-                ListParcelles = new List<Parcelles>();
-
                 // Ici, instructions pouvant échouer
-                StreamReader sr = new StreamReader(cheminAccesFichier);
-                string str;
-                string Unit;
-                Unité U;
-
-                while ((str = sr.ReadLine()) != null)
-                {
-                    
-                    for (int i = 0; i <= 9; i=i+1)
-                    {
-                        Unit = str.Substring(i,1);
-                        U = new Unité(Convert.ToChar(Unit), i, y);
-                        unités.Add(U);
-                    }
-                    y = y + 1;
-                }
-                sr.Close();
+                CreationListUnite(cheminAccesFichier);
                 créationParcelles();
             }
-
             catch (Exception e)
             {
                 // Exécuté uniquement si erreur dans le bloc try
@@ -84,8 +61,32 @@ namespace KCrunchProject
             }
 
         }
+
+        public void CreationListUnite(string cheminAccesFichier)
+        {
+            string nomUnite;
+            Unité U;
+            unités = new List<Unité>();
+            StreamReader IleClaire = new StreamReader(cheminAccesFichier);
+            string str;
+            int y = 0;
+            while ((str = IleClaire.ReadLine()) != null)
+            {
+
+                for (int i = 0; i <= 9; i = i + 1)
+                {
+                    nomUnite = str.Substring(i, 1);
+                    U = new Unité(Convert.ToChar(nomUnite), i, y);
+                    unités.Add(U);
+                }
+                y = y + 1;
+            }
+            IleClaire.Close();
+        }
+
         public int nbParcelle()   //retourne le nombre de parcelle(objet) à créer 
         {
+            
             int maxi = 0;
             int nom;
             foreach (Unité U in unités)
@@ -99,6 +100,8 @@ namespace KCrunchProject
             }
             return maxi - 96;
         }
+
+        
         public void créationParcelles()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'île
         {
             ListParcelles = new List<Parcelles>();
