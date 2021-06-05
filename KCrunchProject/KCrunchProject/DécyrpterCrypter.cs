@@ -21,7 +21,7 @@ namespace KCrunchProject
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereExeption(U.X,U.Y); ;
                 U.Code += CalculFrontiere(U.NomU, U.X, U.Y ,Ile);
-                AfficheCrypt(U.Code, U.X);
+                //AfficheCrypt(U.Code, U.X);
             }  
         }
 
@@ -42,10 +42,6 @@ namespace KCrunchProject
             if (X == 0) code = code + Ouest;
             if (Y == 9) code = code + Sud;
             if (Y == 0) code = code + Nord;
-            if (X == 9 && Y == 9) code = code + Est + Sud;
-            if (X == 0 && Y == 0) code = code + Nord + Ouest;
-            if (X == 0 && Y == 9) code = code + Ouest + Sud;
-            if (X == 9 && Y == 0) code = code + Nord + Est;
             return code;
         }
 
@@ -54,28 +50,31 @@ namespace KCrunchProject
             return SommeNordOuestSudEst(nomU, X, Y,Ile );
         }
 
-        static public int SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY, Ile Ile)
+        static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, Ile Ile)
         {
             int code = 0;
             foreach (Unité U in Ile.Unités)
             {
-                if (nomP != U.NomU && U.X == BoiteX + 1)
-                {
-                    code = code + Est;
-                }
-                if (nomP != U.NomU && U.X == BoiteX - 1)
-                {
-                    code = code + Ouest;
-                }
-                if (nomP != U.NomU && U.Y == BoiteY + 1)
+                if (U.NomU != nom && U.Y == BoiteY + 1 && U.X == BoiteX)
                 {
                     code = code + Nord;
                 }
-                if (nomP != U.NomU && U.Y == BoiteY - 1)
+                else if (U.NomU != nom && U.X == BoiteX - 1 && U.Y == BoiteY)
+                {
+                    code = code + Ouest;
+                }
+                else if (U.NomU != nom && U.Y == BoiteY - 1 && U.X == BoiteX)
                 {
                     code = code + Sud;
                 }
+                else if (U.NomU != nom && U.X == BoiteX + 1 && U.Y == BoiteY)
+                {
+                    code = code + Est;
+                }
+                Console.WriteLine(U.NomU);
+
             }
+            
             return code;
         }
 
