@@ -96,6 +96,9 @@ namespace KCrunchProject
             }
             return FichierCrypter;
         }
+
+
+
         /*
         public void Décrypter ()
         {
