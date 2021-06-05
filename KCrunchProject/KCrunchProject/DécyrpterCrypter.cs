@@ -61,9 +61,11 @@ namespace KCrunchProject
             {
                 for(int i = 0;i <= 9; i++)
                 {
-                    
-                }
-                
+                    if (P.)
+                    {
+
+                    }
+                }  
             }
         }
 
