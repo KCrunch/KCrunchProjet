@@ -7,7 +7,13 @@ namespace KCrunchProject
     class DécyrpterCrypter 
     {
         private int Mer = 64;
-        private int Forêt = 32;
+        private int Foret = 32;
+
+        private int Nord = 1;
+        private int Ouest = 2;
+        private int Sud = 4;
+        private int Est = 8;
+
         /*private string stockNom;
         private int stockX;*/
         private List<Unité> LCode;
@@ -25,23 +31,25 @@ namespace KCrunchProject
 
         public void Crypter()
         {
-            ForetMer();
-            LesBord();
-            NordSudEstOuest();
+            VerifMerOuForet();
+            FrontiereExeption();
+            CalculFrontiere();
+            
             
         }
 
-        public void ForetMer() //
+        public void VerifMerOuForet() //
         {
             foreach (Unité U in LCode)
             {
-                if (U.NomU == 'M') U.Code = U.Code + 64;
-                if (U.NomU == 'F') U.Code = U.Code + 32;
+                if (U.NomU == 'M') U.Code = U.Code + Mer;
+                else if (U.NomU == 'F') U.Code = U.Code + Foret;
             }
         }
 
-        public void LesBord()
+        public void FrontiereExeption()
         {
+
             foreach (Unité U in LCode)
             {
                 if (U.X == 10) U.Code = U.Code + 2 ^ 3;
@@ -55,13 +63,13 @@ namespace KCrunchProject
             }
         }
 
-        public void NordSudEstOuest()
+        public void CalculFrontiere()
         {
             foreach (Unité U in LCode)
             {
                 for(int i = 0;i <= 9; i++)
                 {
-                    if (P.)
+                    if (Parcelles.)
                     {
 
                     }
