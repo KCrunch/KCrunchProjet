@@ -25,6 +25,9 @@ namespace KCrunchProject
         #region Contructeurs
         public Unité(char NomU, int X, int Y) 
         {
+
+
+
             this.nomU = NomU;
             this.x = X;
             this.y = Y;
