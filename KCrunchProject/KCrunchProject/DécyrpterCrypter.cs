@@ -8,7 +8,6 @@ namespace KCrunchProject
     {
         const int Mer = 64;
         const int Foret = 32;
-
         const int Nord = 1;
         const int Ouest = 2;
         const int Sud = 4;
@@ -21,9 +20,9 @@ namespace KCrunchProject
             {
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereExeption(U.X,U.Y); ;
-                U.Code += CalculFrontiere(U.NomU, U.X, U.Y) ;
-                AfficheCrypt();
-            }
+                U.Code += CalculFrontiere(U.NomU, U.X, U.Y ,Ile);
+                AfficheCrypt(U.Code, U.X);
+            }  
         }
 
         static public int VerifMerOuForet(char nomU) //
@@ -50,15 +49,15 @@ namespace KCrunchProject
             return code;
         }
 
-        static public int CalculFrontiere(char nomU,int X, int Y)
+        static public int CalculFrontiere(char nomU,int X, int Y, Ile Ile)
         {
-                return SommeNordOuestSudEst(nomU, X, Y) ;
+            return SommeNordOuestSudEst(nomU, X, Y,Ile );
         }
 
-        static public int SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY)
+        static public int SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY, Ile Ile)
         {
             int code = 0;
-            foreach (Unité U in LCode)
+            foreach (Unité U in Ile.Unités)
             {
                 if (nomP != U.NomU && U.X == BoiteX + 1)
                 {
@@ -81,16 +80,13 @@ namespace KCrunchProject
         }
 
 
-        static public void AfficheCrypt()
+        static public void AfficheCrypt(int code, int x)
         {
-            foreach (Unité U in LCode)
-            {
-                Console.WriteLine("{0} : ", U.Code);
-                if (U.X >= 9)
+                Console.Write("{0}:", code);
+                if (x >= 9)
                 {
-                    Console.Write(" | ");
+                    Console.Write("|");
                 }
-            }
         }
         /*
         public void Décrypter ()
