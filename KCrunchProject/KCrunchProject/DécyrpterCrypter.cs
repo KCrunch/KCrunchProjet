@@ -15,7 +15,7 @@ namespace KCrunchProject
         const int Est = 8;
 
 
-        static public void Crypter(Ile Ile)
+        static public void Crypter(Ile Ile, string LienFichier)
         {
             string Fichier="";
             foreach (Unité U in Ile.Unités)
@@ -25,7 +25,8 @@ namespace KCrunchProject
                 U.Code += SommeNordOuestSudEst(U.NomU, U.X, U.Y, Ile.Unités);
                 Fichier += AfficheCrypt(U.Code, U.X);
             }
-            CreeFichierCrypter(Fichier, "../../../Phatt.chiffre.txt");
+            Console.WriteLine("\n");
+            CreeFichierCrypter(Fichier, LienFichier);
         }
 
         static public int VerifMerOuForet(char nomU)
