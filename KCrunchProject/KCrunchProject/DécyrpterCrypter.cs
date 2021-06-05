@@ -38,10 +38,10 @@ namespace KCrunchProject
         static public int FrontiereExeption(int X,int Y)
         {
             int code = 0;
-            if (X == 9) code = code + Est;
+            if (Y == 0) code = code + Nord;
             if (X == 0) code = code + Ouest;
             if (Y == 9) code = code + Sud;
-            if (Y == 0) code = code + Nord;
+            if (X == 9) code = code + Est;
             return code;
         }
         static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unité> ListeUnites)
@@ -51,21 +51,13 @@ namespace KCrunchProject
             {
                 
                 if (U.NomU != nom && U.Y + 1 == BoiteY  && U.X == BoiteX)
-                {
                     code = code + Nord;
-                }
-                else if (U.NomU != nom && U.X - 1 == BoiteX  && U.Y == BoiteY)
-                {
-                    code = code + Ouest;
-                }
-                else if (U.NomU != nom && U.Y - 1 == BoiteY  && U.X == BoiteX)
-                {
-                    code = code + Sud;
-                }
                 else if (U.NomU != nom && U.X + 1 == BoiteX  && U.Y == BoiteY)
-                {
+                    code = code + Ouest;
+                else if (U.NomU != nom && U.Y - 1 == BoiteY  && U.X == BoiteX)
+                    code = code + Sud;
+                else if (U.NomU != nom && U.X - 1 == BoiteX  && U.Y == BoiteY)
                     code = code + Est;
-                }
             }
             return code;
         }
@@ -73,9 +65,7 @@ namespace KCrunchProject
         static public void AfficheCrypt(int code, int x)
         {
             if (x >= 9)
-            {
                 Console.Write("{0}|",code);
-            }
             else 
                 Console.Write("{0}:", code);
 
