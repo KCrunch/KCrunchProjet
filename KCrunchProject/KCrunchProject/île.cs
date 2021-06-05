@@ -162,6 +162,7 @@ namespace KCrunchProject
                     ChangeForeGrounColorAfficheIle(ConsoleColor.Gray, U.NomU);
                 compt++;
             }
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public void ChangeForeGrounColorAfficheIle(ConsoleColor Couleur, char nomUnite)
