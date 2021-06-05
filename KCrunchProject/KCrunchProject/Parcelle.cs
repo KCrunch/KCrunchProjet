@@ -13,6 +13,11 @@ namespace KCrunchProject
         private List<Unité> Parcelle;
         #endregion
 
+        #region Accesseurs
+        public char NomP { get => nomP; set => nomP = value; }
+        public int TailleP { get => tailleP; set => tailleP = value; }
+        #endregion
+
         #region Constructeurs
         public Parcelles(char nP, List<Unité> ttsUnités)
         {
@@ -27,6 +32,8 @@ namespace KCrunchProject
                 }
             }
         }
+
+        
         #endregion
 
         #region Méthodes

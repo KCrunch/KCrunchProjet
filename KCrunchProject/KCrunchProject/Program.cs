@@ -7,12 +7,15 @@ namespace KCrunchProject
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             île Phatt = new île("../../../Phatt.clair.txt");
             //Phatt.AfficheUnité();
             Phatt.AfficheParcelle();
+            Phatt.tailleParcelles('a');
+            Phatt.tailleMoyenneParcelles();
+            Phatt.AfficheIle();
 
 
             /*

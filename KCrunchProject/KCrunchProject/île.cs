@@ -14,6 +14,8 @@ namespace KCrunchProject
 
         #region Accesseurs
         public List<Unité> Unités { get => unités; set => unités = value; }
+        
+        
         #endregion
 
         #region Constructeurs
@@ -74,10 +76,10 @@ namespace KCrunchProject
         }
         public void AfficheParcelle()
         {
-            // Parcours de la liste Unités élément par élément
+            // Parcours de la liste Parcelle élément par élément
             foreach (Parcelles P in ListParcelles)
             {
-                // Appel de la méthode AfficheU de la classe Unité
+                // Appel de la méthode AfficheP de la classe Parcelles
                 P.AfficheP();
             }
 
@@ -111,8 +113,62 @@ namespace KCrunchProject
             }
         }
 
+        public void tailleParcelles(char nomParcelle) //vérifie que la parcelle existe et l'affiche
+        {
+            bool existe = false;
+            char nom='a';
+            int taille=0;
+            foreach(Parcelles P in ListParcelles)
+            {
+                if (nomParcelle == P.NomP)
+                {
+                    existe = true;
+                    nom = P.NomP;
+                    taille = P.TailleP;
+                }        
+            }
+            if (existe)
+                Console.WriteLine("Taille de la parcelle  {0} : {1} unites",nom ,taille );
+            else
+                Console.WriteLine("Parcelle {0} : inexistante\nTaille de la parcelle {0}: 0 unites", nomParcelle);
+        }
 
+        public void tailleMoyenneParcelles()
+        {
+            int somme = 0;
+            foreach (Parcelles P in ListParcelles)
+                somme = somme + P.TailleP;
+            Console.WriteLine("Aire moyenne : {0:.00}", somme * 1.0 / nbParcelle());
+        }
 
+        public void AfficheIle()
+        {
+            int compt = 0;
+            foreach(Unité U in unités)
+            {
+                if (compt == 10)
+                {
+                    Console.WriteLine("");
+                    compt = 0;
+                }
+                if (U.NomU == 'M')
+                {
+                    //Console.ForeGroundColor() = ConsoleColor.Blue;
+                    Console.Write("{0} ", U.NomU);
+                }
+                else if (U.NomU == 'F')
+                {
+                    //Console.ForeGroundColor() = ConsoleColor.Green;
+                    Console.Write("{0} ", U.NomU);
+                }
+                else
+                {
+                    //Console.ForeGroundColor() = ConsoleColor.Gray;
+                    Console.Write("{0} ", U.NomU);
+                }
+                compt++;
+            }
+        }
         #endregion
     }
 }

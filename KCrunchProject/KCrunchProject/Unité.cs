@@ -34,11 +34,7 @@ namespace KCrunchProject
             else if (NomU == 'F')
                 this.Type = "Forêt";
             else
-            {
                 this.Type = "Parcelle";
-
-            }
-
         }
 
         public Unité(int x, int y)
