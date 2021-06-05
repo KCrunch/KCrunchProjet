@@ -21,11 +21,11 @@ namespace KCrunchProject
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereExeption(U.X,U.Y); ;
                 U.Code += CalculFrontiere(U.NomU, U.X, U.Y ,Ile);
-                //AfficheCrypt(U.Code, U.X);
+                AfficheCrypt(U.Code, U.X);
             }  
         }
 
-        static public int VerifMerOuForet(char nomU) //
+        static public int VerifMerOuForet(char nomU) 
         {
             int code=0;
             if (nomU == 'M') 
