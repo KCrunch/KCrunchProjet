@@ -34,8 +34,9 @@ namespace KCrunchProject
             VerifMerOuForet();
             FrontiereExeption();
             CalculFrontiere();
-            
-            
+            AfficheCrypt();
+
+
         }
 
         public void VerifMerOuForet() //
@@ -52,14 +53,14 @@ namespace KCrunchProject
 
             foreach (Unité U in LCode)
             {
-                if (U.X == 10) U.Code = U.Code + 2 ^ 3;
-                if (U.X == 0) U.Code = U.Code + 2 ^ 1;
-                if (U.Y == 10) U.Code = U.Code + 2 ^ 2;
-                if (U.Y == 0) U.Code = U.Code + 2 ^ 0;
-                if (U.X == 10 && U.Y == 10) U.Code = U.Code + 2 ^ 3 + 2 ^ 2;
-                if (U.X == 0 && U.Y == 0) U.Code = U.Code + 2 ^ 0 + 2 ^ 1;
-                if (U.X == 0 && U.Y == 10) U.Code = U.Code + 2 ^ 1 + 2 ^ 2;
-                if (U.X == 10 && U.Y == 0) U.Code = U.Code + 2 ^ 0 + 2 ^ 3;
+                if (U.X == 9) U.Code = U.Code + Est;
+                if (U.X == 0) U.Code = U.Code + Ouest;
+                if (U.Y == 9) U.Code = U.Code + Sud;
+                if (U.Y == 0) U.Code = U.Code + Nord;
+                if (U.X == 9 && U.Y == 9) U.Code = U.Code + Est + Sud;
+                if (U.X == 0 && U.Y == 0) U.Code = U.Code + Nord + Ouest;
+                if (U.X == 0 && U.Y == 9) U.Code = U.Code + Ouest + Sud;
+                if (U.X == 9 && U.Y == 0) U.Code = U.Code + Nord + Est;
             }
         }
 
@@ -67,13 +68,42 @@ namespace KCrunchProject
         {
             foreach (Unité U in LCode)
             {
-                for(int i = 0;i <= 9; i++)
-                {
-                    if (Parcelles.)
-                    {
+                SommeNordOuestSudEst(U.NomU,U.X,U.Y);
+            }
+        }
 
-                    }
-                }  
+        public void SommeNordOuestSudEst(char nomP, int BoiteX, int BoiteY)
+        {
+            foreach (Unité U in LCode)
+            {
+                if (nomP != U.NomU && U.X == BoiteX + 1)
+                {
+                    U.Code = U.Code + Est;
+                }
+                if (nomP != U.NomU && U.X == BoiteX - 1)
+                {
+                    U.Code = U.Code + Ouest;
+                }
+                if (nomP != U.NomU && U.Y == BoiteY + 1)
+                {
+                    U.Code = U.Code + Nord;
+                }
+                if (nomP != U.NomU && U.Y == BoiteY - 1)
+                {
+                    U.Code = U.Code + Sud;
+                }
+            }
+        }
+
+        public void AfficheCrypt()
+        {
+            foreach (Unité U in LCode)
+            {
+                Console.WriteLine("{0} : ", U.Code);
+                if (U.X >= 9)
+                {
+                    Console.Write(" | ");
+                }
             }
         }
 
