@@ -11,6 +11,7 @@ namespace KCrunchProject
         static void Main(string[] args)
         {
             Ile Phatt = new Ile("../../../Phatt.clair.txt");
+            DécyrpterCrypter.Crypter(Phatt);
             Console.WriteLine();
             Phatt.AfficheUnité();
             Console.WriteLine();
