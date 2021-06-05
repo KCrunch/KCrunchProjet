@@ -152,22 +152,20 @@ namespace KCrunchProject
                     compt = 0;
                 }
                 if (U.NomU == 'M')
-                {
-                    //Console.ForeGroundColor() = ConsoleColor.Blue;
-                    Console.Write("{0} ", U.NomU);
-                }
+                    ChangeForeGrounColorAfficheIle(ConsoleColor.Blue, U.NomU);
                 else if (U.NomU == 'F')
-                {
-                    //Console.ForeGroundColor() = ConsoleColor.Green;
-                    Console.Write("{0} ", U.NomU);
-                }
+                    ChangeForeGrounColorAfficheIle(ConsoleColor.Green, U.NomU);
                 else
-                {
-                    //Console.ForeGroundColor() = ConsoleColor.Gray;
-                    Console.Write("{0} ", U.NomU);
-                }
+                    ChangeForeGrounColorAfficheIle(ConsoleColor.Gray, U.NomU);
                 compt++;
             }
+        }
+
+        public void ChangeForeGrounColorAfficheIle(ConsoleColor Couleur, char nomUnite)
+        {
+            Console.ForegroundColor = Couleur;
+            Console.Write("{0} ", nomUnite);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
         #endregion
     }
