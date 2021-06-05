@@ -51,12 +51,6 @@ namespace KCrunchProject
         #endregion
 
         
-        /*public Unité(string code)
-        {
-            string[] tab = code.Split(':');
-
-            code = tab [0];
-
-        }*/
+        
     }
 }
