@@ -10,7 +10,7 @@ namespace KCrunchProject
         #region Attribut
         private int tailleP;
         private char nomP;
-        private List<Unité> Parcelle;
+        private List<Unite> Parcelle;
         #endregion
 
         #region Accesseurs
@@ -19,12 +19,12 @@ namespace KCrunchProject
         #endregion
 
         #region Constructeurs
-        public Parcelles(char nP, List<Unité> ttsUnités)
+        public Parcelles(char nP, List<Unite> ttsUnités)
         {
             
             nomP = nP;
-            Parcelle = new List<Unité>();
-            foreach (Unité U in ttsUnités)
+            Parcelle = new List<Unite>();
+            foreach (Unite U in ttsUnités)
             {
                 if (U.Type == "Parcelle" && U.NomU == nomP)
                 {
@@ -41,7 +41,7 @@ namespace KCrunchProject
         public void AfficheP()
         {
             Console.WriteLine("Parcelle {0} - {1} Unités",nomP,tailleP);
-            foreach (Unité U in Parcelle)
+            foreach (Unite U in Parcelle)
                 Console.Write("({0},{1})  ",U.X,U.Y);
             Console.WriteLine("\n");
         }
