@@ -4,7 +4,7 @@ using System.Text;
 
 namespace KCrunchProject
 {
-    public class Unité 
+    public class Unite 
     {
         #region Attributs
         private char nomU;
@@ -23,11 +23,8 @@ namespace KCrunchProject
         #endregion
 
         #region Contructeurs
-        public Unité(char NomU, int X, int Y) 
+        public Unite(char NomU, int X, int Y) 
         {
-
-
-
             this.nomU = NomU;
             this.x = X;
             this.y = Y;

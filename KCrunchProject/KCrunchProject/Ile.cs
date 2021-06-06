@@ -8,35 +8,52 @@ namespace KCrunchProject
     public class Ile
     {
         #region Attributs
-        private List<Unité> unités;
+        private List<Unite> unites;
         private List<Parcelles> ListParcelles;
 
         
         #endregion
         #region Accesseurs
-        public List<Unité> Unités { get => unités; set => unités = value; }
+        public List<Unite> Unités { get => unites; set => unites = value; }
         #endregion
 
         #region Constructeurs
         public Ile(string cheminAccesFichier)
         {
-
-            // instanciations de l'attribut unité
-            // Attention ! La lecture dans le fichier peut échouer
-            // Il faut gérer les erreurs -> structure try...catch
-            try
-            {
-                // Ici, instructions pouvant échouer
-                CreationListUnite(cheminAccesFichier);
-                créationParcelles();
+            if(cheminAccesFichier.Contains(".clair"))
+            { 
+                        // instanciations de l'attribut unité
+                        // Attention ! La lecture dans le fichier peut échouer
+                        // Il faut gérer les erreurs -> structure try...catch
+                try
+                {
+                        // Ici, instructions pouvant échouer
+                    CreationListUniteViaPointClair(cheminAccesFichier);
+                    créationParcelles();
+                }
+                catch (Exception e)
+                {
+                        // Exécuté uniquement si erreur dans le bloc try
+                        // e est alimentée par Windows avec un message d'erreur
+                    Console.WriteLine(e.Message);
+                }
             }
-            catch (Exception e)
+            if(cheminAccesFichier.Contains(".chiffre"))
             {
-                // Exécuté uniquement si erreur dans le bloc try
-                // e est alimentée par Windows avec un message d'erreur
-                Console.WriteLine(e.Message);
+                try
+                {
+                    // Ici, instructions pouvant échouer
+                    CreationListUniteViaPointChiffre(cheminAccesFichier);
+                    créationParcelles();
+                }
+                catch (Exception e)
+                {
+                    // Exécuté uniquement si erreur dans le bloc try
+                    // e est alimentée par Windows avec un message d'erreur
+                    Console.WriteLine(e.Message);
+                }
+                
             }
-
 
         }
         #endregion
@@ -45,7 +62,7 @@ namespace KCrunchProject
         public void AfficheUnité()
         {
             // Parcours de la liste Unités élément par élément
-            foreach (Unité U in unités)
+            foreach (Unite U in unites)
             {
                 // Appel de la méthode AfficheU de la classe Unité
                 U.AfficheU();
@@ -63,26 +80,55 @@ namespace KCrunchProject
 
         }
 
-        public void CreationListUnite(string cheminAccesFichier)
+        public void CreationListUniteViaPointClair(string cheminAccesFichier)
         {
             string nomUnite;
-            Unité U;
-            unités = new List<Unité>();
+            Unite U;
+            unites = new List<Unite>();
             StreamReader IleClaire = new StreamReader(cheminAccesFichier);
             string str;
             int y = 0;
             while ((str = IleClaire.ReadLine()) != null)
             {
 
-                for (int i = 0; i <= 9; i = i + 1)
+                for (int x = 0; x <= 9; x = x + 1)
                 {
-                    nomUnite = str.Substring(i, 1);
-                    U = new Unité(Convert.ToChar(nomUnite), i, y);
-                    unités.Add(U);
+                    nomUnite = str.Substring(x, 1);
+                    U = new Unite(Convert.ToChar(nomUnite), x, y);
+                    unites.Add(U);
                 }
                 y = y + 1;
             }
             IleClaire.Close();
+        }
+
+        public void CreationListUniteViaPointChiffre(string cheminAccesFichier)
+        {
+            unites = new List<Unite>();
+            StreamReader IleChiffre = new StreamReader(cheminAccesFichier);
+            string str = IleChiffre.ReadLine();
+            string[] tabDeLigne = str.Split('|');
+            DecryptageUnites(tabDeLigne);
+            IleChiffre.Close();
+        }
+
+        public void DecryptageUnites(string[] ligneDeIle)
+        {
+            char nomUnite;
+            Unite U;
+            int y = 0;
+            string[] tabDeUnite;
+            while (ligneDeIle[y].Split(':') != null)
+            {
+                tabDeUnite = ligneDeIle[y].Split(':');
+                for (int x = 0; x <= 9; x++)
+                {
+                    nomUnite = DecrypterCrypter.DecrypteNomUnite(tabDeUnite[x]);
+                    U = new Unite(nomUnite, x, y);
+                    unites.Add(U);
+                }
+                y++;
+            }
         }
 
         public int nbParcelle()   //retourne le nombre de parcelle(objet) à créer 
@@ -90,7 +136,7 @@ namespace KCrunchProject
 
             int maxi = 0;
             int nom;
-            foreach (Unité U in unités)
+            foreach (Unite U in unites)
             {
                 if (U.Type == "Parcelle")
                 {
@@ -111,7 +157,7 @@ namespace KCrunchProject
             Parcelles P;
             for (int i = 1; i <= nbDeParcelle; i++)
             {
-                P = new Parcelles(nomParcelle, unités);
+                P = new Parcelles(nomParcelle, unites);
                 ListParcelles.Add(P);
                 nomParcelle = Convert.ToChar(Convert.ToInt32(nomParcelle) + 1);
             }
@@ -148,7 +194,7 @@ namespace KCrunchProject
         public void AfficheIle()
         {
             int compt = 0;
-            foreach (Unité U in unités)
+            foreach (Unite U in unites)
             {
                 if (compt == 10)
                 {

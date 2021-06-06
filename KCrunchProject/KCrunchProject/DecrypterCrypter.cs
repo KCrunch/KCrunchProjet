@@ -5,7 +5,7 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    static class DécyrpterCrypter
+    static class DecrypterCrypter
     {
         const int Mer = 64;
         const int Foret = 32;
@@ -18,7 +18,7 @@ namespace KCrunchProject
         static public void Crypter(Ile Ile, string LienFichier)
         {
             string Fichier="";
-            foreach (Unité U in Ile.Unités)
+            foreach (Unite U in Ile.Unités)
             {
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereExeption(U.X, U.Y); ;
@@ -48,10 +48,10 @@ namespace KCrunchProject
             if (X == 9) code = code + Est;
             return code;
         }
-        static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unité> ListeUnites)
+        static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unite> ListeUnites)
         {
             int code = 0;
-            foreach (Unité U in ListeUnites)
+            foreach (Unite U in ListeUnites)
             {
 
                 if (U.NomU != nom && U.Y + 1 == BoiteY && U.X == BoiteX)
@@ -98,17 +98,13 @@ namespace KCrunchProject
             return FichierCrypter;
         }
 
-
-
-        /*
-        public void Décrypter ()
+        static public char DecrypteNomUnite(string nomUniteChiffre)
         {
-        
-            string[] tab = code.Split(':'); // methode pour séparer dans un fichier le nombre de character separer par un caractere voulue
-            code = tab [0];
-
-        }*/
-        
+            char nomUniteClair = 'a';
+            int code = Convert.ToInt32(nomUniteChiffre);
+            
+            return nomUniteClair;
+        } 
     }
 }
 

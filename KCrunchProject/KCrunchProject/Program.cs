@@ -11,34 +11,66 @@ namespace KCrunchProject
         static void Main(string[] args)
         {
 
-            Ile Phatt = new Ile("../../../Phatt.clair.txt");
-            DécyrpterCrypter.Crypter(Phatt,"../../../Phatt.chiffre.txt");
+            Ile PhattClair = new Ile("../../../Phatt.clair.txt");
+            DecrypterCrypter.Crypter(PhattClair,"../../../Phatt.chiffre.txt");
             
-            Ile Scabb = new Ile("../../../Scabb.clair.txt");
-            DécyrpterCrypter.Crypter(Scabb, "../../../Scabb.chiffre.txt");
+            Ile ScabbClair = new Ile("../../../Scabb.clair.txt");
+            DecrypterCrypter.Crypter(ScabbClair, "../../../Scabb.chiffre.txt");
+
+            Ile PhattChiffre = new Ile("../../../Phatt.chiffre.txt");
+
+
+            Ile ScabbChiffre = new Ile("../../../Scabb.chiffre.txt");
+
+
+            
+             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+            Console.WriteLine("\n");
+            PhattClair.AfficheParcelle();
+            Console.WriteLine();
+            PhattClair.tailleParcelles('s');
+            Console.WriteLine();
+            PhattClair.tailleMoyenneParcelles();
+            Console.WriteLine();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            PhattClair.AfficheIle();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+
+            Console.WriteLine("\n");
+            ScabbClair.AfficheParcelle();
+            Console.WriteLine();
+            ScabbClair.tailleParcelles('s');
+            Console.WriteLine();
+            ScabbClair.tailleMoyenneParcelles();
+            Console.WriteLine();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            ScabbClair.AfficheIle();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
 
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
             Console.WriteLine("\n");
-            Phatt.AfficheParcelle();
+            PhattChiffre.AfficheParcelle();
             Console.WriteLine();
-            Phatt.tailleParcelles('a');
+            PhattChiffre.tailleParcelles('s');
             Console.WriteLine();
-            Phatt.tailleMoyenneParcelles();
+            PhattChiffre.tailleMoyenneParcelles();
             Console.WriteLine();
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
-            Phatt.AfficheIle();
+            PhattChiffre.AfficheIle();
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
 
             Console.WriteLine("\n");
-            Scabb.AfficheParcelle();
+            ScabbChiffre.AfficheParcelle();
             Console.WriteLine();
-            Scabb.tailleParcelles('a');
+            ScabbChiffre.tailleParcelles('s');
             Console.WriteLine();
-            Scabb.tailleMoyenneParcelles();
+            ScabbChiffre.tailleMoyenneParcelles();
             Console.WriteLine();
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
-            Scabb.AfficheIle();
+            ScabbChiffre.AfficheIle();
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
 
