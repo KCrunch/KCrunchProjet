@@ -236,6 +236,7 @@ namespace KCrunchProject
 
         public void AfficheIle()
         {
+            string FichierDecrypter;
             int compt = 0;
             foreach (Unite U in unites)
             {
@@ -250,6 +251,8 @@ namespace KCrunchProject
                     ChangeForeGrounColorAfficheIle(ConsoleColor.Green, U.NomU);
                 else
                     ChangeForeGrounColorAfficheIle(ConsoleColor.Gray, U.NomU);
+                FichierDecrypter = Convert.ToString(U.NomU) + " ";
+                 
                 compt++;
             }
             Console.ForegroundColor = ConsoleColor.Gray;

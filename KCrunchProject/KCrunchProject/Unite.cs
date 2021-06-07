@@ -12,8 +12,6 @@ namespace KCrunchProject
         private int y;
         private int code = 0;
         private string type;
-        private int codeVoisinNord = 0;
-        private int codeVoisinOuest = 0;
         #endregion
 
         #region Accesseurs
@@ -22,8 +20,7 @@ namespace KCrunchProject
         public char NomU { get => nomU; set => nomU = value; }
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
-        public int CodeVoisinOuest { get => codeVoisinOuest; set => codeVoisinOuest = value; }
-        public int CodeVoisinNord { get => codeVoisinNord; set => codeVoisinNord = value; }
+
         #endregion
 
         #region Contructeurs
@@ -47,8 +44,7 @@ namespace KCrunchProject
             this.type = DecrypterCrypter.DeterminerTypeUnite(code, out this.nomU);
             this.x = x;
             this.y = y;
-            this.codeVoisinNord = Convert.ToInt32(voisinNord);
-            this.codeVoisinOuest = Convert.ToInt32(voisinOuest);
+
         }
         #endregion
 

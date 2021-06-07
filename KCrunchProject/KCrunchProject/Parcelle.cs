@@ -41,7 +41,7 @@ namespace KCrunchProject
             Parcelle = new List<Unite>();
             foreach (Unite U in ttsUnités)
             {
-                if (DecrypterCrypter.DeterminerSiParcelles(U.Code))
+                if (U.Type=="Parcelle")
                 {
                     if (numeroUnite == 1 && U.NomU == ' ')
                     {
@@ -68,7 +68,7 @@ namespace KCrunchProject
                 }
             }
         }
-
+        
 
         #endregion
 

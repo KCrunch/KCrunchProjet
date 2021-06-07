@@ -10,8 +10,9 @@ namespace KCrunchProject
 
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("\n //////////////////////  Début Ile Phatt  ////////////////////// \n");
-            /*Ile PhattChiffre = new Ile("../../../Phatt.chiffre.txt");
+            Ile PhattChiffre = new Ile("../../../Phatt.chiffre.txt");
             Ile PhattClair = new Ile("../../../Phatt.clair.txt");
 
             Console.WriteLine("\n //////////////////////  Cryptage Ile Phatt  ////////////////////// \n");
@@ -97,6 +98,7 @@ namespace KCrunchProject
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");*/
 
             Ile PhattChiffre = new Ile("../../../Phatt.chiffre.txt");
+            DecrypterCrypter.Decrypter(PhattChiffre,"../../../Phatt.claire.txt");
 
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
             Console.WriteLine("\n");
@@ -111,7 +113,7 @@ namespace KCrunchProject
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
 
-            Ile ScabbChiffre = new Ile("../../../Scabb.chiffre.txt");
+           /* Ile ScabbChiffre = new Ile("../../../Scabb.chiffre.txt");
 
             Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
             Console.WriteLine("\n");
@@ -124,7 +126,7 @@ namespace KCrunchProject
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
             ScabbChiffre.AfficheIle();
             Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
-            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");*/
             /*
             Console.WriteLine("\n");
             ScabbChiffre.AfficheParcelle();

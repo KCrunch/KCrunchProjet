@@ -26,7 +26,7 @@ namespace KCrunchProject
                 Fichier += AfficheCrypt(U.Code, U.X);
             }
             Console.WriteLine("\n");
-            CreeFichierCrypter(Fichier, LienFichier);
+            CreeFichier(Fichier, LienFichier);
         }
 
         static public int VerifMerOuForet(char nomU)
@@ -66,7 +66,7 @@ namespace KCrunchProject
             return code;
         }
 
-        static public void CreeFichierCrypter(string Fichier, string cheminAccesFichier) 
+        static public void CreeFichier(string Fichier, string cheminAccesFichier) 
         {
             if (File.Exists(cheminAccesFichier))
             {
@@ -81,6 +81,7 @@ namespace KCrunchProject
                 fileStr.Write(text, 0, text.Length);
             }
         }
+
 
         static public string AfficheCrypt(int code, int x)
         {
@@ -175,26 +176,29 @@ namespace KCrunchProject
                     resultat = false;
             return resultat;
         }
+
+        static public void Decrypter(Ile Ile, string cheminAccesFichier)
+        {
+            string Fichier = "";
+            string cheminAccesF;
+            int compt = 0;
+            foreach (Unite U in Ile.Unités)
+            {
+                if (compt == 10)
+                {
+                    Fichier += "\n";
+                    compt = 0;
+                }
+
+                Fichier += Convert.ToString(U.NomU) + " ";
+
+                compt++;
+            }
+            cheminAccesF = cheminAccesFichier;
+            CreeFichier(Fichier, cheminAccesF);
+        }
+
     }
 }
-/*foreach(Unite U in Ile.Unites)
-{
-    if (U.Type == "parcelle")
-    {
-            int NomC = 'a';
-            char NomParcelle = ' ';
-            foreach (Unite U in ListeUnites)
-            {
-                if (type == "Parcelle" && U.X - 1 == BoiteX && U.Y == BoiteY && code - Est >= 0) // c normal c du la plus grande a la plus petite puissance de deux
-                    NomParcelle = Convert.ToChar(NomC);
-                else if (type == "Parcelle" && U.Y - 1 == BoiteY && U.X == BoiteX && code - Sud >= 0)
-                    NomParcelle = Convert.ToChar(NomC);
-                else if (type == "Parcelle" && U.X + 1 == BoiteX && U.Y == BoiteY && code - Ouest >= 0)
-                    NomParcelle = Convert.ToChar(NomC);
-                else if (type == "Parcelle" && U.Y + 1 == BoiteX && U.Y == BoiteY && code - Nord >= 0)
-                    NomParcelle = Convert.ToChar(NomC);
-            }
-            // 9 = Nord + Est  9 - 8 = 1 NON 9 - 1 = 0 NON Donc Voisin Ouest et Sud || 13 = Nord + Sud + Est  13 - 8 <= 0 NON 5 - 4 = 1 <= 0 NON 1 - 1 NON Donc voisin Ouest
-        }
-    }*/
+
 
