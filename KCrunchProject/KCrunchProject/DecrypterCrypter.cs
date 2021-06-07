@@ -190,7 +190,7 @@ namespace KCrunchProject
                     compt = 0;
                 }
 
-                Fichier += Convert.ToString(U.NomU) + " ";
+                Fichier += Convert.ToString(U.NomU);
 
                 compt++;
             }
