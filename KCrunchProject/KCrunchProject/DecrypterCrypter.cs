@@ -104,8 +104,97 @@ namespace KCrunchProject
             int code = Convert.ToInt32(nomUniteChiffre);
             
             return nomUniteClair;
-        } 
+        }
+        static public string DeterminerTypeUnite(int code,out char nomUnite)
+        {
+            nomUnite = ' ';
+            string type = "";
+            if (code - Mer >= 0)
+            {
+                type = "Mer";
+                nomUnite = 'M';
+            }
+            else if (code - Foret >= 0)
+            {
+                type = "Foret";
+                nomUnite = 'F';
+            }
+            else
+                type = "Parcelle";
+            return type;
+        }
+        static public bool DeterminerMemeParcelles(int code, int coordonneXU, int coordonneYU, int coordonneXVoisin, int coordonneYVoisin)
+        {
+            bool resultat=false;
+            if ( !DeterminerSiFrontiereNord(code) &&  (coordonneXU == coordonneXVoisin) && (coordonneYU - 1 == coordonneYVoisin))
+                resultat =true;
+            if ( !DeterminerSiFrontiereOuest(code) && (coordonneXU - 1 == coordonneXVoisin) && (coordonneYU  == coordonneYVoisin))
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiParcelles(int code)
+        {
+            bool resultat = false;
+            if (code < Foret)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiFrontiereNord(int code)
+        {
+            bool resultat = false;
+            if (code >= Est)
+                code -= Est;
+            if (code >= Sud)
+                code -= Sud;
+            if (code >= Ouest)
+                code -= Ouest;
+            if (code == Nord)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiFrontiereOuest(int code)
+        {
+            bool resultat = false;
+            if (code >= Est)
+                code -= Est;
+            if (code >= Sud)
+                code -= Sud;
+            if (code >= Ouest)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool ToutesUniteANomUnite(List<Unite> toutesUnites)
+        {
+            bool resultat = true;
+            foreach (Unite U in toutesUnites)
+                if (U.NomU == ' ')
+                    resultat = false;
+            return resultat;
+        }
     }
 }
-
+/*foreach(Unite U in Ile.Unites)
+{
+    if (U.Type == "parcelle")
+    {
+            int NomC = 'a';
+            char NomParcelle = ' ';
+            foreach (Unite U in ListeUnites)
+            {
+                if (type == "Parcelle" && U.X - 1 == BoiteX && U.Y == BoiteY && code - Est >= 0) // c normal c du la plus grande a la plus petite puissance de deux
+                    NomParcelle = Convert.ToChar(NomC);
+                else if (type == "Parcelle" && U.Y - 1 == BoiteY && U.X == BoiteX && code - Sud >= 0)
+                    NomParcelle = Convert.ToChar(NomC);
+                else if (type == "Parcelle" && U.X + 1 == BoiteX && U.Y == BoiteY && code - Ouest >= 0)
+                    NomParcelle = Convert.ToChar(NomC);
+                else if (type == "Parcelle" && U.Y + 1 == BoiteX && U.Y == BoiteY && code - Nord >= 0)
+                    NomParcelle = Convert.ToChar(NomC);
+            }
+            // 9 = Nord + Est  9 - 8 = 1 NON 9 - 1 = 0 NON Donc Voisin Ouest et Sud || 13 = Nord + Sud + Est  13 - 8 <= 0 NON 5 - 4 = 1 <= 0 NON 1 - 1 NON Donc voisin Ouest
+        }
+    }*/
 

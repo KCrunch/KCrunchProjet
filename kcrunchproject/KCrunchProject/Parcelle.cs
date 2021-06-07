@@ -34,7 +34,42 @@ namespace KCrunchProject
             }
         }
 
-        
+        public Parcelles(char nP, List<Unite> ttsUnités, int numeroUnite)
+        {
+            int unique = 1;
+            nomP = nP;
+            Parcelle = new List<Unite>();
+            foreach (Unite U in ttsUnités)
+            {
+                if (DecrypterCrypter.DeterminerSiParcelles(U.Code))
+                {
+                    if (numeroUnite == 1 && U.NomU == ' ')
+                    {
+                        U.NomU = nomP;
+                        Parcelle.Add(U);
+                        tailleP++;
+                        numeroUnite++;
+                    } 
+                    else
+                    {
+                        foreach(Unite UParcelle in this.Parcelle)
+                        {
+                            if (DecrypterCrypter.DeterminerMemeParcelles(U.Code,U.X,U.Y,UParcelle.X,UParcelle.Y) && unique == 1)
+                            {
+                                U.NomU = nomP;
+                                tailleP++;
+                                unique++;
+                            }
+                        }
+                        if(U.NomU==nomP)
+                            Parcelle.Add(U);
+                        unique = 1;
+                    }
+                }
+            }
+        }
+
+
         #endregion
 
         #region Méthodes
