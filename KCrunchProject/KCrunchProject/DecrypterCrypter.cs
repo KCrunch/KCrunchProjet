@@ -23,7 +23,7 @@ namespace KCrunchProject
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereExeption(U.X, U.Y); ;
                 U.Code += SommeNordOuestSudEst(U.NomU, U.X, U.Y, Ile.Unités);
-                Fichier += AfficheCrypt(U.Code, U.X);
+                Fichier += CreeCrypt(U.Code, U.X);
             }
             Console.WriteLine("\n");
             CreeFichier(Fichier, LienFichier);
@@ -82,21 +82,39 @@ namespace KCrunchProject
             }
         }
 
-
-        static public string AfficheCrypt(int code, int x)
+        static public string CreeCrypt(int code, int x)
         {
             string FichierCrypter;
             if (x >= 9)
             {
-                Console.Write("{0}|", code);
                 FichierCrypter = Convert.ToString(code) + "|";
             }
             else
             {
-                Console.Write("{0}:", code);
                 FichierCrypter = Convert.ToString(code) + ":";
             }
+
             return FichierCrypter;
+        }
+
+        static public void AfficheCrypt(int code, int x)
+        {
+            if (x >= 9)
+            {
+                Console.Write("{0}|", code);
+            }
+            else
+            {
+                Console.Write("{0}:", code);
+            }
+        }
+
+        static public void BoucleAffiche(Ile Ile)
+        {
+            foreach(Unite U in Ile.Unités)
+            {
+                AfficheCrypt(U.Code, U.X);
+            }
         }
 
         static public char DecrypteNomUnite(string nomUniteChiffre)
@@ -202,30 +220,38 @@ namespace KCrunchProject
             {
                 Ile Clair = new Ile("../../../" + fichier + ".clair.txt");
                 DecrypterCrypter.Crypter(Clair, "../../../" + fichier + ".chiffre.txt");
-                DecrypterCrypter.AfficheTout(Clair);
+                DecrypterCrypter.AfficheTout(Clair,type,fichier);
             }
             if (type == "chiffre")
             {
                 Ile Chiffre = new Ile("../../../" + fichier + ".chiffre.txt");
                 DecrypterCrypter.Decrypter(Chiffre, "../../../" + fichier + ".clair.txt");
-                DecrypterCrypter.AfficheTout(Chiffre);
+                DecrypterCrypter.AfficheTout(Chiffre,type,fichier);
             }
         }
 
-        static public void AfficheTout(Ile Type)
+        static public void AfficheTout(Ile Type, string type, string fichier)
         {
-            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
-            Console.WriteLine("\n");
+            Console.WriteLine("\n //////////////////////////////////////////////// " + type + " " + fichier + " ///////////////////////////////////////////////// \n");
+
+            Console.WriteLine("\n -------------------------------------Toute les parcelle et les coordonnée de chaque unité----------------------- \n");
             Type.AfficheParcelle();
-            Console.WriteLine();
-            Type.tailleParcelles('s');
-            Console.WriteLine();
+
+            Console.WriteLine("\n -----------------------------------------------------Taille Parcelle 'a'---------------------------------------- \n");
+            Type.tailleParcelles('a');
+
+            Console.WriteLine("\n ---------------------------------------------------Taille moyenne Parcelle-------------------------------------- \n");
             Type.tailleMoyenneParcelles();
+
+            Console.WriteLine("\n ------------------------------------------------------Carte île chiffré----------------------------------------- \n");
+            BoucleAffiche(Type);
             Console.WriteLine();
-            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+
+            Console.WriteLine("\n ----------------------------------------------------------Carte île--------------------------------------------- \n");
             Type.AfficheIle();
-            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
-            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+            Console.WriteLine();
+
+            Console.WriteLine("\n ///////////////////////////////////////////// fin de " + type + " " + fichier + " //////////////////////////////////////////// \n");
         }
         
 
