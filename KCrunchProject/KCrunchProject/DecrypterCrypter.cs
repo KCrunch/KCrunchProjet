@@ -5,30 +5,65 @@ using System.IO;
 
 namespace KCrunchProject
 {
+    /// <summary>
+    /// Classe DécrypterCrypter : Regroupe le cryptage ainsi que le décryptage
+    /// </summary>
     static class DecrypterCrypter
     {
+        /// <summary>
+        /// Constante correspondant à une Mer
+        /// </summary>
         const int Mer = 64;
+
+        /// <summary>
+        /// Constante correspondant à une Fôret
+        /// </summary>
         const int Foret = 32;
+
+        /// <summary>
+        /// Constante correspond à une frontière nord
+        /// </summary>
         const int Nord = 1;
+
+        /// <summary>
+        /// Constante correspond à une frontière ouest
+        /// </summary>
         const int Ouest = 2;
+
+        /// <summary>
+        /// Constante correspond à une frontière sud
+        /// </summary>
         const int Sud = 4;
+
+        /// <summary>
+        /// Constante correspond à une frontière est
+        /// </summary>
         const int Est = 8;
 
-
+        /// <summary>
+        /// Cyptage de l'ile
+        /// </summary>
+        /// <param name="Ile"></param>
+        /// <param name="LienFichier"></param>
         static public void Crypter(Ile Ile, string LienFichier)
         {
             string Fichier="";
             foreach (Unite U in Ile.Unités)
             {
                 U.Code += VerifMerOuForet(U.NomU);
-                U.Code += FrontiereExeption(U.X, U.Y); ;
+                U.Code += FrontiereException(U.X, U.Y); ;
                 U.Code += SommeNordOuestSudEst(U.NomU, U.X, U.Y, Ile.Unités);
-                Fichier += AfficheCrypt(U.Code, U.X);
+                Fichier += EcritureCryptage(U.Code, U.X);
             }
             Console.WriteLine("\n");
             CreeFichier(Fichier, LienFichier);
         }
 
+        /// <summary>
+        /// Vérification pour savoir si c'est une parcelle mer ou forêt
+        /// </summary>
+        /// <param name="nomU"></param>
+        /// <returns></returns>
         static public int VerifMerOuForet(char nomU)
         {
             int code = 0;
@@ -39,7 +74,13 @@ namespace KCrunchProject
             return code;
         }
 
-        static public int FrontiereExeption(int X, int Y)
+        /// <summary>
+        /// Cryptage des exceptions de frontières (les bordures de la carte)
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <returns></returns>
+        static public int FrontiereException(int X, int Y)
         {
             int code = 0;
             if (Y == 0) code = code + Nord;
@@ -48,6 +89,15 @@ namespace KCrunchProject
             if (X == 9) code = code + Est;
             return code;
         }
+
+        /// <summary>
+        /// Cryptage des frontières classiques
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="BoiteX"></param>
+        /// <param name="BoiteY"></param>
+        /// <param name="ListeUnites"></param>
+        /// <returns></returns>
         static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unite> ListeUnites)
         {
             int code = 0;
@@ -65,7 +115,12 @@ namespace KCrunchProject
             }
             return code;
         }
-
+        
+        /// <summary>
+        /// Fonction pour créer un fichier
+        /// </summary>
+        /// <param name="Fichier"></param>
+        /// <param name="cheminAccesFichier"></param>
         static public void CreeFichier(string Fichier, string cheminAccesFichier) 
         {
             if (File.Exists(cheminAccesFichier))
@@ -82,8 +137,13 @@ namespace KCrunchProject
             }
         }
 
-
-        static public string AfficheCrypt(int code, int x)
+        /// <summary>
+        /// Affichage du cryptage effectué 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        static public string EcritureCryptage(int code, int x)
         {
             string FichierCrypter;
             if (x >= 9)
@@ -99,13 +159,12 @@ namespace KCrunchProject
             return FichierCrypter;
         }
 
-        static public char DecrypteNomUnite(string nomUniteChiffre)
-        {
-            char nomUniteClair = 'a';
-            int code = Convert.ToInt32(nomUniteChiffre);
-            
-            return nomUniteClair;
-        }
+        /// <summary>
+        /// Fonction pour déterminer le type de l'unité
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="nomUnite"></param>
+        /// <returns></returns>
         static public string DeterminerTypeUnite(int code,out char nomUnite)
         {
             nomUnite = ' ';
@@ -124,6 +183,16 @@ namespace KCrunchProject
                 type = "Parcelle";
             return type;
         }
+
+        /// <summary>
+        /// Déterminer si c'est la même parcelle (a, b, c...)
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="coordonneXU"></param>
+        /// <param name="coordonneYU"></param>
+        /// <param name="coordonneXVoisin"></param>
+        /// <param name="coordonneYVoisin"></param>
+        /// <returns></returns>
         static public bool DeterminerMemeParcelles(int code, int coordonneXU, int coordonneYU, int coordonneXVoisin, int coordonneYVoisin)
         {
             bool resultat=false;
@@ -134,6 +203,11 @@ namespace KCrunchProject
             return resultat;
         }
 
+        /// <summary>
+        /// Détermine si c'est une parcelle
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         static public bool DeterminerSiParcelles(int code)
         {
             bool resultat = false;
@@ -142,6 +216,11 @@ namespace KCrunchProject
             return resultat;
         }
 
+        /// <summary>
+        /// Determine si c'est une frontiere nord
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         static public bool DeterminerSiFrontiereNord(int code)
         {
             bool resultat = false;
@@ -156,6 +235,11 @@ namespace KCrunchProject
             return resultat;
         }
 
+        /// <summary>
+        /// Détermine si c'est une frontière ouest
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         static public bool DeterminerSiFrontiereOuest(int code)
         {
             bool resultat = false;
@@ -168,6 +252,11 @@ namespace KCrunchProject
             return resultat;
         }
 
+        /// <summary>
+        /// Vérification si chaque unité dans toutesUnites possède un nom
+        /// </summary>
+        /// <param name="toutesUnites"></param>
+        /// <returns></returns>
         static public bool ToutesUniteANomUnite(List<Unite> toutesUnites)
         {
             bool resultat = true;
@@ -177,6 +266,11 @@ namespace KCrunchProject
             return resultat;
         }
 
+        /// <summary>
+        /// Décryptage de l'ile
+        /// </summary>
+        /// <param name="Ile"></param>
+        /// <param name="cheminAccesFichier"></param>
         static public void Decrypter(Ile Ile, string cheminAccesFichier)
         {
             string Fichier = "";

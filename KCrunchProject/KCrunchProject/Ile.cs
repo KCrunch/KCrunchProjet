@@ -5,19 +5,35 @@ using System.IO;
 
 namespace KCrunchProject
 {
+    /// <summary>
+    /// Classe Ile : Modélise une ile
+    /// </summary>
     public class Ile
     {
         #region Attributs
+        /// <summary>
+        /// Liste regroupant les unités
+        /// </summary>
         private List<Unite> unites;
+        /// <summary>
+        /// Liste regroupant les parcelles
+        /// </summary>
         private List<Parcelles> ListParcelles;
 
         
         #endregion
         #region Accesseurs
+        /// <summary>
+        /// Accesseur en lecture et écriture de l'attribut List<Unite>
+        /// </summary>
         public List<Unite> Unités { get => unites; set => unites = value; }
         #endregion
 
         #region Constructeurs
+        /// <summary>
+        /// Constructeur de la classe <see cref=""/>
+        /// </summary>
+        /// <param name="cheminAccesFichier"></param>
         public Ile(string cheminAccesFichier)
         {
             if(cheminAccesFichier.Contains(".clair"))
@@ -59,6 +75,9 @@ namespace KCrunchProject
         #endregion
 
         #region Méthodes
+        /// <summary>
+        /// Affichage des unités
+        /// </summary>
         public void AfficheUnité()
         {
             // Parcours de la liste Unités élément par élément
@@ -69,6 +88,9 @@ namespace KCrunchProject
             }
 
         }
+        /// <summary>
+        /// Affichage des parcelles
+        /// </summary>
         public void AfficheParcelle()
         {
             // Parcours de la liste Parcelle élément par élément
@@ -79,6 +101,10 @@ namespace KCrunchProject
             }
 
         }
+        /// <summary>
+        /// Creation d'une Liste Unite via un ".clair"
+        /// </summary>
+        /// <param name="cheminAccesFichier"></param>
 
         public void CreationListUniteViaPointClair(string cheminAccesFichier)
         {
@@ -102,6 +128,10 @@ namespace KCrunchProject
             IleClaire.Close();
         }
 
+        /// <summary>
+        /// Creation d'une Liste Unite via un ".chiffre"
+        /// </summary>
+        /// <param name="cheminAccesFichier"></param>
         public void CreationListUniteViaPointChiffre(string cheminAccesFichier)
         {
             unites = new List<Unite>();
@@ -112,6 +142,10 @@ namespace KCrunchProject
             IleChiffre.Close();
         }
 
+        /// <summary>
+        /// Permet de décrypter l'ile
+        /// </summary>
+        /// <param name="ligneDeIle"></param>
         public void DecryptageUnites(string[] ligneDeIle)
         {
             Unite U;
@@ -127,39 +161,32 @@ namespace KCrunchProject
                     for (int x = 0; x <= 9; x++)
                     {
                         if (x > 0)
-                        {
                             U = new Unite(tabDeUnite[x], x, y, tabDeUnite[x - 1], exTabDeUnite[x]);
-                            unites.Add(U);
-                        }
                         else
-                        {
                             U = new Unite(tabDeUnite[x], x, y, "0", "0");
-                            unites.Add(U);
-                        }
+                        unites.Add(U);
                     }
-
                 }
                 else
                 {
                     for (int x = 0; x <= 9; x++)
                     {
                         if (x > 0)
-                        {
                             U = new Unite(tabDeUnite[x], x, y, tabDeUnite[x - 1], "0");
-                            unites.Add(U);
-                        }
                         else 
-                        {
                             U = new Unite(tabDeUnite[x], x, y, "0", "0");
-                            unites.Add(U);
-                        }     
-                     }
+                        unites.Add(U);
+                    }
                 }
                 y++;
             }
         }
 
-        public int nbParcelle()   //retourne le nombre de parcelle(objet) à créer 
+        /// <summary>
+        /// Permet de retourner le nombre de parcelle(objet) à créer
+        /// </summary>
+        /// <returns></returns>
+        public int nbParcelle()   
         {
 
             int maxi = 0;
@@ -176,7 +203,9 @@ namespace KCrunchProject
             return maxi - 96;
         }
 
-
+        /// <summary>
+        /// Crée toutes les parcelles et les mets dans la liste de parcelle de l'Ile
+        /// </summary>
         public void CréationParcellesViaPointClair()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'Ile
         {
             ListParcelles = new List<Parcelles>();
@@ -206,6 +235,10 @@ namespace KCrunchProject
             }
         }
 
+        /// <summary>
+        /// Vérifie que la parcelle existe et l'affiche
+        /// </summary>
+        /// <param name="nomParcelle"></param>
         public void tailleParcelles(char nomParcelle) //vérifie que la parcelle existe et l'affiche
         {
             bool existe = false;
@@ -226,6 +259,9 @@ namespace KCrunchProject
                 Console.WriteLine("Parcelle {0} : inexistante\nTaille de la parcelle {0}: 0 unites", nomParcelle);
         }
 
+        /// <summary>
+        /// Calcule la taille moyenne de la parcelle et l'affiche
+        /// </summary>
         public void tailleMoyenneParcelles()
         {
             int somme = 0;
@@ -234,6 +270,9 @@ namespace KCrunchProject
             Console.WriteLine("Aire moyenne : {0:.00}", somme * 1.0 / nbParcelle());
         }
 
+        /// <summary>
+        /// Affichage de l'ile
+        /// </summary>
         public void AfficheIle()
         {
             string FichierDecrypter;
@@ -258,6 +297,11 @@ namespace KCrunchProject
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
+        /// <summary>
+        /// Permet de changer la couleur de l'ile
+        /// </summary>
+        /// <param name="Couleur"></param>
+        /// <param name="nomUnite"></param>
         public void ChangeForeGrounColorAfficheIle(ConsoleColor Couleur, char nomUnite)
         {
             Console.ForegroundColor = Couleur;
