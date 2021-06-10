@@ -323,19 +323,18 @@ namespace KCrunchProject
             CreeFichier(Fichier, cheminAccesFichier);
         }
 
-        static public void SiClairOuChiffre(string type,string fichier)
+        static public Ile SiClairOuChiffre(string type,string fichier)
         {
             if (type == "clair")
             {
                 Ile Clair = new Ile("../../../" + fichier + ".clair.txt");
                 DecrypterCrypter.Crypter(Clair, "../../../" + fichier + ".chiffre.txt");
-                DecrypterCrypter.AfficheTout(Clair,type,fichier);
-            }
-            if (type == "chiffre")
+                return Clair;
+            }else
             {
                 Ile Chiffre = new Ile("../../../" + fichier + ".chiffre.txt");
                 DecrypterCrypter.Decrypter(Chiffre, "../../../" + fichier + ".clair.txt");
-                DecrypterCrypter.AfficheTout(Chiffre,type,fichier);
+                return Chiffre;
             }
         }
 
