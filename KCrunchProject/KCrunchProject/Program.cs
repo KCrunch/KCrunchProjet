@@ -39,9 +39,9 @@ namespace KCrunchProject
                     Console.WriteLine("Votre fichier n'existe pas ou il est mal écrit veuillez verifier les majuscule");
                 }
             } while (verif != true);
-            DecrypterCrypter.SiChiffreOuChiffre(Type, Fichier);
-
-        }public static char continuer()
+            DecrypterCrypter.SiClairOuChiffre(Type, Fichier);
+        }
+        public static char continuer()
         {
             char Continuer;
             do
@@ -55,6 +55,7 @@ namespace KCrunchProject
             } while (Continuer != 'n' && Continuer != 'o');
             return (Continuer);
         }
+
         static void Main(string[] args)
         {
             string Type;
