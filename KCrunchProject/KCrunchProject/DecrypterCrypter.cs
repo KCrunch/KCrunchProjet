@@ -204,7 +204,6 @@ namespace KCrunchProject
                 DecrypterCrypter.Crypter(Clair, "../../../" + fichier + ".chiffre.txt");
                 DecrypterCrypter.AfficheTout(Clair);
             }
-
             if (type == "chiffre")
             {
                 Ile Chiffre = new Ile("../../../" + fichier + ".chiffre.txt");
