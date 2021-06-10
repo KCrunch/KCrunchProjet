@@ -157,7 +157,20 @@ namespace KCrunchProject
 
             return FichierCrypter;
         }
+        static public string CreeCrypt(int code, int x)
+        {
+            string FichierCrypter;
+            if (x >= 9)
+            {
+                FichierCrypter = Convert.ToString(code) + "|";
+            }
+            else
+            {
+                FichierCrypter = Convert.ToString(code) + ":";
+            }
 
+            return FichierCrypter;
+        }
         static public void AfficheCrypt(int code, int x)
         {
             if (x >= 9)
