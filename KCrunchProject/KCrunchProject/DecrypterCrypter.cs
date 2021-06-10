@@ -53,7 +53,7 @@ namespace KCrunchProject
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereException(U.X, U.Y); ;
                 U.Code += SommeNordOuestSudEst(U.NomU, U.X, U.Y, Ile.Unités);
-                Fichier += EcritureCryptage(U.Code, U.X);
+                Fichier += CreeCrypt(U.Code, U.X);
             }
             Console.WriteLine("\n");
             CreeFichier(Fichier, LienFichier);
@@ -148,23 +148,43 @@ namespace KCrunchProject
             string FichierCrypter;
             if (x >= 9)
             {
-                Console.Write("{0}|", code);
                 FichierCrypter = Convert.ToString(code) + "|";
             }
             else
             {
-                Console.Write("{0}:", code);
                 FichierCrypter = Convert.ToString(code) + ":";
             }
+
             return FichierCrypter;
         }
 
-        /// <summary>
-        /// Fonction pour déterminer le type de l'unité
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="nomUnite"></param>
-        /// <returns></returns>
+        static public void AfficheCrypt(int code, int x)
+        {
+            if (x >= 9)
+            {
+                Console.Write("{0}|", code);
+            }
+            else
+            {
+                Console.Write("{0}:", code);
+            }
+        }
+
+        static public void BoucleAffiche(Ile Ile)
+        {
+            foreach(Unite U in Ile.Unités)
+            {
+                AfficheCrypt(U.Code, U.X);
+            }
+        }
+
+        static public char DecrypteNomUnite(string nomUniteChiffre)
+        {
+            char nomUniteClair = 'a';
+            int code = Convert.ToInt32(nomUniteChiffre);
+            
+            return nomUniteClair;
+        }
         static public string DeterminerTypeUnite(int code,out char nomUnite)
         {
             nomUnite = ' ';
@@ -274,7 +294,6 @@ namespace KCrunchProject
         static public void Decrypter(Ile Ile, string cheminAccesFichier)
         {
             string Fichier = "";
-            string cheminAccesF;
             int compt = 0;
             foreach (Unite U in Ile.Unités)
             {
@@ -288,9 +307,49 @@ namespace KCrunchProject
 
                 compt++;
             }
-            cheminAccesF = cheminAccesFichier;
-            CreeFichier(Fichier, cheminAccesF);
+            CreeFichier(Fichier, cheminAccesFichier);
         }
+
+        static public void SiClairOuChiffre(string type,string fichier)
+        {
+            if (type == "clair")
+            {
+                Ile Clair = new Ile("../../../" + fichier + ".clair.txt");
+                DecrypterCrypter.Crypter(Clair, "../../../" + fichier + ".chiffre.txt");
+                DecrypterCrypter.AfficheTout(Clair,type,fichier);
+            }
+            if (type == "chiffre")
+            {
+                Ile Chiffre = new Ile("../../../" + fichier + ".chiffre.txt");
+                DecrypterCrypter.Decrypter(Chiffre, "../../../" + fichier + ".clair.txt");
+                DecrypterCrypter.AfficheTout(Chiffre,type,fichier);
+            }
+        }
+
+        static public void AfficheTout(Ile Type, string type, string fichier)
+        {
+            Console.WriteLine("\n //////////////////////////////////////////////// " + type + " " + fichier + " ///////////////////////////////////////////////// \n");
+
+            Console.WriteLine("\n -------------------------------------Toute les parcelle et les coordonnée de chaque unité----------------------- \n");
+            Type.AfficheParcelle();
+
+            Console.WriteLine("\n -----------------------------------------------------Taille Parcelle 'a'---------------------------------------- \n");
+            Type.tailleParcelles('a');
+
+            Console.WriteLine("\n ---------------------------------------------------Taille moyenne Parcelle-------------------------------------- \n");
+            Type.tailleMoyenneParcelles();
+
+            Console.WriteLine("\n ------------------------------------------------------Carte île chiffré----------------------------------------- \n");
+            BoucleAffiche(Type);
+            Console.WriteLine();
+
+            Console.WriteLine("\n ----------------------------------------------------------Carte île--------------------------------------------- \n");
+            Type.AfficheIle();
+            Console.WriteLine();
+
+            Console.WriteLine("\n ///////////////////////////////////////////// fin de " + type + " " + fichier + " //////////////////////////////////////////// \n");
+        }
+        
 
     }
 }
