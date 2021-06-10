@@ -26,7 +26,7 @@ namespace KCrunchProject
                 Fichier += AfficheCrypt(U.Code, U.X);
             }
             Console.WriteLine("\n");
-            CreeFichierCrypter(Fichier, LienFichier);
+            CreeFichier(Fichier, LienFichier);
         }
 
         static public int VerifMerOuForet(char nomU)
@@ -66,7 +66,7 @@ namespace KCrunchProject
             return code;
         }
 
-        static public void CreeFichierCrypter(string Fichier, string cheminAccesFichier) 
+        static public void CreeFichier(string Fichier, string cheminAccesFichier) 
         {
             if (File.Exists(cheminAccesFichier))
             {
@@ -81,6 +81,7 @@ namespace KCrunchProject
                 fileStr.Write(text, 0, text.Length);
             }
         }
+
 
         static public string AfficheCrypt(int code, int x)
         {
@@ -104,7 +105,99 @@ namespace KCrunchProject
             int code = Convert.ToInt32(nomUniteChiffre);
             
             return nomUniteClair;
-        } 
+        }
+        static public string DeterminerTypeUnite(int code,out char nomUnite)
+        {
+            nomUnite = ' ';
+            string type = "";
+            if (code - Mer >= 0)
+            {
+                type = "Mer";
+                nomUnite = 'M';
+            }
+            else if (code - Foret >= 0)
+            {
+                type = "Foret";
+                nomUnite = 'F';
+            }
+            else
+                type = "Parcelle";
+            return type;
+        }
+        static public bool DeterminerMemeParcelles(int code, int coordonneXU, int coordonneYU, int coordonneXVoisin, int coordonneYVoisin)
+        {
+            bool resultat=false;
+            if ( !DeterminerSiFrontiereNord(code) &&  (coordonneXU == coordonneXVoisin) && (coordonneYU - 1 == coordonneYVoisin))
+                resultat =true;
+            if ( !DeterminerSiFrontiereOuest(code) && (coordonneXU - 1 == coordonneXVoisin) && (coordonneYU  == coordonneYVoisin))
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiParcelles(int code)
+        {
+            bool resultat = false;
+            if (code < Foret)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiFrontiereNord(int code)
+        {
+            bool resultat = false;
+            if (code >= Est)
+                code -= Est;
+            if (code >= Sud)
+                code -= Sud;
+            if (code >= Ouest)
+                code -= Ouest;
+            if (code == Nord)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool DeterminerSiFrontiereOuest(int code)
+        {
+            bool resultat = false;
+            if (code >= Est)
+                code -= Est;
+            if (code >= Sud)
+                code -= Sud;
+            if (code >= Ouest)
+                resultat = true;
+            return resultat;
+        }
+
+        static public bool ToutesUniteANomUnite(List<Unite> toutesUnites)
+        {
+            bool resultat = true;
+            foreach (Unite U in toutesUnites)
+                if (U.NomU == ' ')
+                    resultat = false;
+            return resultat;
+        }
+
+        static public void Decrypter(Ile Ile, string cheminAccesFichier)
+        {
+            string Fichier = "";
+            string cheminAccesF;
+            int compt = 0;
+            foreach (Unite U in Ile.Unités)
+            {
+                if (compt == 10)
+                {
+                    Fichier += "\n";
+                    compt = 0;
+                }
+
+                Fichier += Convert.ToString(U.NomU);
+
+                compt++;
+            }
+            cheminAccesF = cheminAccesFichier;
+            CreeFichier(Fichier, cheminAccesF);
+        }
+
     }
 }
 

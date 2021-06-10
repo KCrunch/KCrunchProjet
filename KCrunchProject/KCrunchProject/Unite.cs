@@ -20,6 +20,7 @@ namespace KCrunchProject
         public char NomU { get => nomU; set => nomU = value; }
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
+
         #endregion
 
         #region Contructeurs
@@ -37,6 +38,14 @@ namespace KCrunchProject
                 this.Type = "Parcelle";
         }
 
+        public Unite(string codeChiffre, int x, int y, string voisinOuest, string voisinNord)
+        {
+            this.code = Convert.ToInt32(codeChiffre);
+            this.type = DecrypterCrypter.DeterminerTypeUnite(code, out this.nomU);
+            this.x = x;
+            this.y = y;
+
+        }
         #endregion
 
         public void AfficheU()

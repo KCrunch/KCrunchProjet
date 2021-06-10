@@ -29,7 +29,7 @@ namespace KCrunchProject
                 {
                         // Ici, instructions pouvant échouer
                     CreationListUniteViaPointClair(cheminAccesFichier);
-                    créationParcelles();
+                    CréationParcellesViaPointClair();
                 }
                 catch (Exception e)
                 {
@@ -44,7 +44,7 @@ namespace KCrunchProject
                 {
                     // Ici, instructions pouvant échouer
                     CreationListUniteViaPointChiffre(cheminAccesFichier);
-                    créationParcelles();
+                    CréationParcellesViaPointChiffre();
                 }
                 catch (Exception e)
                 {
@@ -114,18 +114,46 @@ namespace KCrunchProject
 
         public void DecryptageUnites(string[] ligneDeIle)
         {
-            char nomUnite;
             Unite U;
             int y = 0;
             string[] tabDeUnite;
-            while (ligneDeIle[y].Split(':') != null)
+            string[] exTabDeUnite;
+            while (y != 10)
             {
                 tabDeUnite = ligneDeIle[y].Split(':');
-                for (int x = 0; x <= 9; x++)
+                if (y >= 1)
                 {
-                    nomUnite = DecrypterCrypter.DecrypteNomUnite(tabDeUnite[x]);
-                    U = new Unite(nomUnite, x, y);
-                    unites.Add(U);
+                    exTabDeUnite = ligneDeIle[y - 1].Split(':');
+                    for (int x = 0; x <= 9; x++)
+                    {
+                        if (x > 0)
+                        {
+                            U = new Unite(tabDeUnite[x], x, y, tabDeUnite[x - 1], exTabDeUnite[x]);
+                            unites.Add(U);
+                        }
+                        else
+                        {
+                            U = new Unite(tabDeUnite[x], x, y, "0", "0");
+                            unites.Add(U);
+                        }
+                    }
+
+                }
+                else
+                {
+                    for (int x = 0; x <= 9; x++)
+                    {
+                        if (x > 0)
+                        {
+                            U = new Unite(tabDeUnite[x], x, y, tabDeUnite[x - 1], "0");
+                            unites.Add(U);
+                        }
+                        else 
+                        {
+                            U = new Unite(tabDeUnite[x], x, y, "0", "0");
+                            unites.Add(U);
+                        }     
+                     }
                 }
                 y++;
             }
@@ -149,7 +177,7 @@ namespace KCrunchProject
         }
 
 
-        public void créationParcelles()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'Ile
+        public void CréationParcellesViaPointClair()  //Créer toutes les parcelles et les mets dans la liste de parcelle de l'Ile
         {
             ListParcelles = new List<Parcelles>();
             char nomParcelle = 'a';
@@ -160,6 +188,21 @@ namespace KCrunchProject
                 P = new Parcelles(nomParcelle, unites);
                 ListParcelles.Add(P);
                 nomParcelle = Convert.ToChar(Convert.ToInt32(nomParcelle) + 1);
+            }
+        }
+
+        public void CréationParcellesViaPointChiffre()
+        {
+            char nomParcelle = 'a';
+            ListParcelles = new List<Parcelles>();
+            Parcelles P;
+            int numeroUnite = 1;
+            while (!DecrypterCrypter.ToutesUniteANomUnite(unites))
+            {
+                P = new Parcelles(nomParcelle, unites, numeroUnite);
+                ListParcelles.Add(P);
+                nomParcelle = Convert.ToChar(Convert.ToInt32(nomParcelle) + 1);
+                numeroUnite = 1;
             }
         }
 
@@ -193,6 +236,7 @@ namespace KCrunchProject
 
         public void AfficheIle()
         {
+            string FichierDecrypter;
             int compt = 0;
             foreach (Unite U in unites)
             {
@@ -207,6 +251,8 @@ namespace KCrunchProject
                     ChangeForeGrounColorAfficheIle(ConsoleColor.Green, U.NomU);
                 else
                     ChangeForeGrounColorAfficheIle(ConsoleColor.Gray, U.NomU);
+                FichierDecrypter = Convert.ToString(U.NomU) + " ";
+                 
                 compt++;
             }
             Console.ForegroundColor = ConsoleColor.Gray;
