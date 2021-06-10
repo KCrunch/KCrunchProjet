@@ -196,7 +196,7 @@ namespace KCrunchProject
             CreeFichier(Fichier, cheminAccesFichier);
         }
 
-        static public void SiClaireOuChiffre(string type,string fichier)
+        static public void SiClairOuChiffre(string type,string fichier)
         {
             if (type == "clair")
             {
