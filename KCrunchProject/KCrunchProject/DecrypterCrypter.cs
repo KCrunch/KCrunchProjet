@@ -180,7 +180,6 @@ namespace KCrunchProject
         static public void Decrypter(Ile Ile, string cheminAccesFichier)
         {
             string Fichier = "";
-            string cheminAccesF;
             int compt = 0;
             foreach (Unite U in Ile.Unités)
             {
@@ -194,9 +193,42 @@ namespace KCrunchProject
 
                 compt++;
             }
-            cheminAccesF = cheminAccesFichier;
-            CreeFichier(Fichier, cheminAccesF);
+            CreeFichier(Fichier, cheminAccesFichier);
         }
+
+        static public void SiChiffreOuChiffre(string type,string fichier)
+        {
+            if (type == "clair")
+            {
+                Ile Clair = new Ile("../../../" + fichier + ".clair.txt");
+                DecrypterCrypter.Crypter(Clair, "../../../" + fichier + ".chiffre.txt");
+                DecrypterCrypter.AfficheTout(Clair);
+            }
+
+            if (type == "chiffre")
+            {
+                Ile Chiffre = new Ile("../../../" + fichier + ".chiffre.txt");
+                DecrypterCrypter.Decrypter(Chiffre, "../../../" + fichier + ".clair.txt");
+                DecrypterCrypter.AfficheTout(Chiffre);
+            }
+        }
+
+        static public void AfficheTout(Ile Type)
+        {
+            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+            Console.WriteLine("\n");
+            Type.AfficheParcelle();
+            Console.WriteLine();
+            Type.tailleParcelles('s');
+            Console.WriteLine();
+            Type.tailleMoyenneParcelles();
+            Console.WriteLine();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            Type.AfficheIle();
+            Console.WriteLine("\n --------------------------------------------------------------------------------- \n");
+            Console.WriteLine("\n ///////////////////////////////////////////////////////////////////////////////// \n");
+        }
+        
 
     }
 }
