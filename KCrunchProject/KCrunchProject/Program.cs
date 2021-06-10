@@ -89,7 +89,7 @@ namespace KCrunchProject
                 Console.WriteLine("Choisissez la commande que vous voulez");
                 numCommande = Convert.ToInt32(Console.ReadLine());
                 if (numCommande == 1) TypeCMD.AfficheIle();
-                if (numCommande == 2) DecrypterCrypter.BoucleAffiche(TypeCMD);
+                if (numCommande == 2) DecrypterCrypter.AfficheUnitesCrypt(TypeCMD);
                 if (numCommande == 3) TypeCMD.tailleMoyenneParcelles();
                 if (numCommande == 4) 
                 {
@@ -119,7 +119,6 @@ namespace KCrunchProject
         {
             string Type;
             char Continuer;
-            Ile TypeCMD;
             Console.WriteLine("IL faut au moins un fichier dans le dossier où se trouve toute les class");
             do
             {
