@@ -53,7 +53,7 @@ namespace KCrunchProject
                 U.Code += VerifMerOuForet(U.NomU);
                 U.Code += FrontiereException(U.X, U.Y); ;
                 U.Code += SommeNordOuestSudEst(U.NomU, U.X, U.Y, Ile.Unités);
-                Fichier += CreeCrypt(U.Code, U.X);
+                Fichier += EcritureCryptage(U.Code, U.X);
             }
             Console.WriteLine("\n");
             CreeFichier(Fichier, LienFichier);
@@ -157,21 +157,13 @@ namespace KCrunchProject
 
             return FichierCrypter;
         }
-        static public string CreeCrypt(int code, int x)
-        {
-            string FichierCrypter;
-            if (x >= 9)
-            {
-                FichierCrypter = Convert.ToString(code) + "|";
-            }
-            else
-            {
-                FichierCrypter = Convert.ToString(code) + ":";
-            }
-
-            return FichierCrypter;
-        }
-        static public void AfficheCrypt(int code, int x)
+        
+        /// <summary>
+        /// Affichage cryptage
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="x"></param>
+        static public void AfficheCodeCrypt(int code, int x)
         {
             if (x >= 9)
             {
@@ -183,21 +175,27 @@ namespace KCrunchProject
             }
         }
 
-        static public void BoucleAffiche(Ile Ile)
+
+        /// <summary>
+        /// Boucle d'affichage d'AfficheCodeCrypt
+        /// </summary>
+        /// <param name="Ile"></param>
+        static public void AfficheUnitesCrypt(Ile Ile)
         {
             foreach(Unite U in Ile.Unités)
             {
-                AfficheCrypt(U.Code, U.X);
+                AfficheCodeCrypt(U.Code, U.X);
             }
         }
 
-        static public char DecrypteNomUnite(string nomUniteChiffre)
-        {
-            char nomUniteClair = 'a';
-            int code = Convert.ToInt32(nomUniteChiffre);
-            
-            return nomUniteClair;
-        }
+        
+
+        /// <summary>
+        /// Détermine le type de l'unité
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="nomUnite"></param>
+        /// <returns></returns>
         static public string DeterminerTypeUnite(int code,out char nomUnite)
         {
             nomUnite = ' ';
@@ -353,7 +351,7 @@ namespace KCrunchProject
             Type.tailleMoyenneParcelles();
 
             Console.WriteLine("\n ------------------------------------------------------Carte île chiffré----------------------------------------- \n");
-            BoucleAffiche(Type);
+            AfficheUnitesCrypt(Type);
             Console.WriteLine();
 
             Console.WriteLine("\n ----------------------------------------------------------Carte île--------------------------------------------- \n");
