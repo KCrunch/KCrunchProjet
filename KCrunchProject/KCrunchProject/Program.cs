@@ -67,7 +67,6 @@ namespace KCrunchProject
         public static char continuer()
         {
             char Continuer;
-
             do
             {
                 Console.WriteLine("Voulez vous donnez un autre fichier ? o / n ");
@@ -101,6 +100,7 @@ namespace KCrunchProject
                 if(numCommande == 6) DecrypterCrypter.AfficheTout(TypeCMD, type, fichier);
                 if (numCommande > 7) Console.WriteLine("Vous devez choisir un nombre entre 1 et 7");
                 Console.WriteLine();
+                if (numCommande == 7) Console.Clear();
             } while (numCommande != 7);
         }
         public static void AfficheCommande()
