@@ -326,6 +326,12 @@ namespace KCrunchProject
             CreeFichier(Fichier, cheminAccesFichier);
         }
 
+        /// <summary>
+        /// Vérifie si le fichier demandé sera .clair ou .chiffre
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="fichier"></param>
+        /// <returns>Retourne l'Ile en .clair ou .chiffre</returns>
         static public Ile SiClairOuChiffre(string type,string fichier)
         {
             if (type == "clair")
@@ -341,6 +347,12 @@ namespace KCrunchProject
             }
         }
 
+        /// <summary>
+        /// Affichage des parcelles, des tailles des parcelles, de la taille moyenne des parcelles, des unités cryptés et l'ile
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <param name="type"></param>
+        /// <param name="fichier"></param>
         static public void AfficheTout(Ile Type, string type, string fichier)
         {
             Console.WriteLine("\n //////////////////////////////////////////////// " + type + " " + fichier + " ///////////////////////////////////////////////// \n");
@@ -369,4 +381,4 @@ namespace KCrunchProject
     }
 }
 
-
+#endregion
