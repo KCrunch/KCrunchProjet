@@ -6,10 +6,11 @@ using System.IO;
 namespace KCrunchProject
 {
     /// <summary>
-    /// Classe DécrypterCrypter : Regroupe le cryptage ainsi que le décryptage
+    /// Classe DecrypterCrypter : Regroupe le cryptage ainsi que le décryptage
     /// </summary>
     static class DecrypterCrypter
     {
+        #region Attributs
         /// <summary>
         /// Constante correspondant à une Mer
         /// </summary>
@@ -39,7 +40,10 @@ namespace KCrunchProject
         /// Constante correspond à une frontière est
         /// </summary>
         const int Est = 8;
+        #endregion
 
+        #region Méthodes
+        #region Cryptage
         /// <summary>
         /// Cyptage de l'ile
         /// </summary>
@@ -63,7 +67,7 @@ namespace KCrunchProject
         /// Vérification pour savoir si c'est une parcelle mer ou forêt
         /// </summary>
         /// <param name="nomU"></param>
-        /// <returns></returns>
+        /// <returns>Retourne le code de l'unité</returns>
         static public int VerifMerOuForet(char nomU)
         {
             int code = 0;
@@ -79,7 +83,7 @@ namespace KCrunchProject
         /// </summary>
         /// <param name="X"></param>
         /// <param name="Y"></param>
-        /// <returns></returns>
+        /// <returns>Retourne le code de l'unité</returns>
         static public int FrontiereException(int X, int Y)
         {
             int code = 0;
@@ -97,7 +101,7 @@ namespace KCrunchProject
         /// <param name="BoiteX"></param>
         /// <param name="BoiteY"></param>
         /// <param name="ListeUnites"></param>
-        /// <returns></returns>
+        /// <returns>Retourne le code de l'unité</returns>
         static public int SommeNordOuestSudEst(char nom, int BoiteX, int BoiteY, List<Unite> ListeUnites)
         {
             int code = 0;
@@ -142,7 +146,7 @@ namespace KCrunchProject
         /// </summary>
         /// <param name="code"></param>
         /// <param name="x"></param>
-        /// <returns></returns>
+        /// <returns>Retourne le fichier crypté</returns>
         static public string EcritureCryptage(int code, int x)
         {
             string FichierCrypter;
@@ -187,9 +191,10 @@ namespace KCrunchProject
                 AfficheCodeCrypt(U.Code, U.X);
             }
         }
+        #endregion
 
-        
 
+        #region Décryptage
         /// <summary>
         /// Détermine le type de l'unité
         /// </summary>
@@ -223,7 +228,7 @@ namespace KCrunchProject
         /// <param name="coordonneYU"></param>
         /// <param name="coordonneXVoisin"></param>
         /// <param name="coordonneYVoisin"></param>
-        /// <returns></returns>
+        /// <returns>Retourne un booléen</returns>
         static public bool DeterminerMemeParcelles(int code, int coordonneXU, int coordonneYU, int coordonneXVoisin, int coordonneYVoisin)
         {
             bool resultat=false;
@@ -238,7 +243,7 @@ namespace KCrunchProject
         /// Détermine si c'est une parcelle
         /// </summary>
         /// <param name="code"></param>
-        /// <returns></returns>
+        /// <returns>Retourne un booléen</returns>
         static public bool DeterminerSiParcelles(int code)
         {
             bool resultat = false;
@@ -251,7 +256,7 @@ namespace KCrunchProject
         /// Determine si c'est une frontiere nord
         /// </summary>
         /// <param name="code"></param>
-        /// <returns></returns>
+        /// <returns>Retourne un booléen</returns>
         static public bool DeterminerSiFrontiereNord(int code)
         {
             bool resultat = false;
@@ -270,7 +275,7 @@ namespace KCrunchProject
         /// Détermine si c'est une frontière ouest
         /// </summary>
         /// <param name="code"></param>
-        /// <returns></returns>
+        /// <returns>Retourne un booléen</returns>
         static public bool DeterminerSiFrontiereOuest(int code)
         {
             bool resultat = false;
@@ -287,7 +292,7 @@ namespace KCrunchProject
         /// Vérification si chaque unité dans toutesUnites possède un nom
         /// </summary>
         /// <param name="toutesUnites"></param>
-        /// <returns></returns>
+        /// <returns>Retourne un booléen</returns>
         static public bool ToutesUniteANomUnite(List<Unite> toutesUnites)
         {
             bool resultat = true;
@@ -321,6 +326,11 @@ namespace KCrunchProject
             CreeFichier(Fichier, cheminAccesFichier);
         }
 
+        /// <summary>
+        /// Vérifie si le fichier reçu est un .clair ou un .chiffre
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="fichier"></param>
         static public void SiClairOuChiffre(string type,string fichier)
         {
             if (type == "clair")
@@ -360,7 +370,7 @@ namespace KCrunchProject
 
             Console.WriteLine("\n ///////////////////////////////////////////// fin de " + type + " " + fichier + " //////////////////////////////////////////// \n");
         }
-        
+        #endregion
 
     }
 }

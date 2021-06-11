@@ -185,7 +185,7 @@ namespace KCrunchProject
         /// <summary>
         /// Permet de retourner le nombre de parcelle(objet) à créer
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retourne le nombre de parcelles maximum d'une Ile.clair</returns>
         public int nbParcelle()   
         {
 

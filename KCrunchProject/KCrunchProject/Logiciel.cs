@@ -5,8 +5,16 @@ using System.IO;
 
 namespace KCrunchProject
 {
-    class Program
+    /// <summary>
+    /// Classe principal utilisant tous les outils de cryptage et de décryptage disponible
+    /// </summary>
+    class Logiciel
     {
+
+        /// <summary>
+        /// Permet d'afficher et de choisir le type de fichier à utiliser
+        /// </summary>
+        /// <returns>Retourne le type du fichier (.clair ou .chiffre)</returns>
         public static string type()
         {
             string Type;
@@ -21,6 +29,10 @@ namespace KCrunchProject
         return Type;
         }
 
+        /// <summary>
+        /// Permet d'afficher et de choisir le fichier à utiliser
+        /// </summary>
+        /// <param name="Type"></param>
         public static void fichier(string Type)
         {
             string Fichier;
@@ -41,6 +53,11 @@ namespace KCrunchProject
             } while (verif != true);
             DecrypterCrypter.SiClairOuChiffre(Type, Fichier);
         }
+
+        /// <summary>
+        /// Permet de recommencer ou non l'opération effectué avant
+        /// </summary>
+        /// <returns>Retourne le choix de l'utilisateur</returns>
         public static char continuer()
         {
             char Continuer;
@@ -56,6 +73,10 @@ namespace KCrunchProject
             return (Continuer);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             string Type;
