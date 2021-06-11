@@ -6,7 +6,7 @@ using System.IO;
 namespace KCrunchProject
 {
     /// <summary>
-    /// Classe principal utilisant tous les outils de cryptage et de décryptage disponible
+    /// Classe Logiciel : classe principale utilisant tous les outils de cryptage et de décryptage disponible
     /// </summary>
     class Logiciel
     {
